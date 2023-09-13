@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import NotFound from '../NotFound/NotFound';
+import Movies from '../Movies/Movies';
 
 
 function App() {
@@ -15,8 +16,19 @@ function App() {
         path="/"
         element={
           <>
-            <Header main={true}/>
+            <Header promo={true} loggedIn={false}/>
             <Main/>
+            <Footer/>
+          </>
+        }
+      />
+
+      <Route
+        path="/movies"
+        element={
+          <>
+            <Header promo={false} loggedIn={true}/>
+            <Movies/>
             <Footer/>
           </>
         }
