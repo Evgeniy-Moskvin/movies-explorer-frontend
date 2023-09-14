@@ -7,6 +7,7 @@ import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import NotFound from '../NotFound/NotFound';
 import Movies from '../Movies/Movies';
+import Profile from '../Profile/Profile';
 
 
 function App() {
@@ -41,6 +42,16 @@ function App() {
             <Header promo={false} loggedIn={true}/>
             <Movies isSave={true}/>
             <Footer/>
+          </>
+        }
+      />
+
+      <Route
+        path="/profile"
+        element={
+          <>
+            <Header promo={false} loggedIn={true}/>
+            <Profile/>
           </>
         }
       />
