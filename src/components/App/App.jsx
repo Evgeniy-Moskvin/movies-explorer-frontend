@@ -28,7 +28,18 @@ function App() {
         element={
           <>
             <Header promo={false} loggedIn={true}/>
-            <Movies/>
+            <Movies isSave={false}/>
+            <Footer/>
+          </>
+        }
+      />
+
+      <Route
+        path="/saved-movies"
+        element={
+          <>
+            <Header promo={false} loggedIn={true}/>
+            <Movies isSave={true}/>
             <Footer/>
           </>
         }

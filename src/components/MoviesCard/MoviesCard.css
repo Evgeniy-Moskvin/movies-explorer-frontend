@@ -54,6 +54,22 @@
   cursor: pointer;
 }
 
+.movies-card__button-delete {
+  flex-shrink: 0;
+
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin-left: 16px;
+  padding: 0;
+
+  background: url("../../images/delete.svg") center no-repeat;
+  background-size: contain;
+  border: none;
+
+  cursor: pointer;
+}
+
 .movies-card__button-like_active {
   background-image: url("../../images/like-active.svg");
 }
