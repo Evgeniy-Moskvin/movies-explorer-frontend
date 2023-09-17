@@ -1,12 +1,18 @@
-import React from 'react';
+import { useState, useEffect } from "react";
 import './Navigation.css';
 import { NavLink } from "react-router-dom";
 
 const Navigation = ({ promo, loggedIn }) => {
+
+  const [isOpen, setOpen] = useState();
+  useEffect(() => {
+    setOpen(false);
+  }, []);
+
   return (
     <nav className="navigation">
       { !promo &&
-        <ul className="navigation__list">
+        <ul className="navigation__list navigation__list_device_desktop">
           <li className="navigation__item">
             <NavLink to="/movies" className="navigation__link link-animate">Фильмы</NavLink>
           </li>
@@ -17,11 +23,15 @@ const Navigation = ({ promo, loggedIn }) => {
       }
 
       { loggedIn ?
-        <ul className="navigation__list navigation__list_user">
-          <li className="navigation__item">
-            <NavLink to="/profile" className="navigation__link navigation__link_profile link-animate">Аккаунт</NavLink>
-          </li>
-        </ul>
+        <>
+          <ul className="navigation__list navigation__list_user navigation__list_device_desktop">
+            <li className="navigation__item">
+              <NavLink to="/profile" className="navigation__link-profile link-animate">Аккаунт</NavLink>
+            </li>
+          </ul>
+
+          <button type="button" className="navigation__button-menu" onClick={() => {setOpen(!isOpen)}}></button>
+        </>
         :
         <ul className="navigation__list navigation__list_user">
           <li className="navigation__item">
@@ -32,6 +42,26 @@ const Navigation = ({ promo, loggedIn }) => {
           </li>
         </ul>
       }
+
+      <div className={`navigation__mobile ${isOpen && 'navigation__mobile_active'}`}>
+        <button type="button" className="navigation__button-close" onClick={() => {setOpen(!isOpen)}}></button>
+
+        <ul className="navigation__mobile-list">
+          <li className="navigation__mobile-item">
+            <NavLink to="/" className={({isActive}) => `navigation__mobile-link link-animate ${isActive ? 'navigation__mobile-link_active' : ''}`}>Главная</NavLink>
+          </li>
+          <li className="navigation__mobile-item">
+            <NavLink to="/movies" className={({isActive}) => `navigation__mobile-link link-animate ${isActive ? 'navigation__mobile-link_active' : ''}`}>Фильмы</NavLink>
+          </li>
+          <li className="navigation__mobile-item">
+            <NavLink to="/saved-movies" className={({isActive}) => `navigation__mobile-link link-animate ${isActive ? 'navigation__mobile-link_active' : ''}`}>Сохранённые фильмы</NavLink>
+          </li>
+          <li className="navigation__mobile-item">
+            <NavLink to="/profile" className="navigation__link-profile link-animate">Аккаунт</NavLink>
+          </li>
+        </ul>
+      </div>
+
     </nav>
   );
 };

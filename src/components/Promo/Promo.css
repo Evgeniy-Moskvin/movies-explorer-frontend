@@ -10,9 +10,12 @@
 }
 
 .promo__title {
-  max-width: 730px;
+  box-sizing: border-box;
+  max-width: 750px;
   width: 100%;
   margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
 
   font-weight: 400;
   font-style: normal;
@@ -21,4 +24,22 @@
   letter-spacing: -2px;
   text-align: center;
   color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .promo {
+    min-height: 784px;
+  }
+}
+
+@media (max-width: 480px) {
+  .promo {
+    min-height: 570px;
+  }
+
+  .promo__title {
+    font-size: 31px;
+    line-height: 39px;
+    letter-spacing: -1.24px;
+  }
 }

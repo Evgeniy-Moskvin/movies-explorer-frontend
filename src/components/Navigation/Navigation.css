@@ -1,5 +1,6 @@
 .navigation {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
 
   width: 100%;
@@ -30,12 +31,19 @@
   color: #ffffff;
 }
 
-.navigation__link_profile {
+.navigation__link-profile {
   display: inline-flex;
   align-items: center;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: none;
+  color: #ffffff;
 }
 
-.navigation__link_profile::after {
+.navigation__link-profile::after {
   content: "";
 
   width: 26px;
@@ -72,4 +80,124 @@
   gap: 30px;
 
   margin-left: auto;
+}
+
+.navigation__list_user .navigation__link {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.navigation__button-menu {
+  display: block;
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+
+  background: transparent url("../../images/menu-burger.svg") center no-repeat;
+  background-size: contain;
+  border: none;
+
+  cursor: pointer;
+}
+
+.navigation__button-close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+
+  display: block;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  background: transparent url("../../images/menu-close.svg") center no-repeat;
+  background-size: contain;
+  border: none;
+
+  cursor: pointer;
+}
+
+.navigation__mobile {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: -100%;
+  bottom: 0;
+
+  width: 520px;
+
+  background-color: #202020;
+
+  transition: right 0.24s linear;
+}
+
+.navigation__mobile_active {
+  right: 0;
+}
+
+.navigation__mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+  padding: 160px 90px 90px;
+
+  text-align: center;
+
+  list-style: none;
+}
+
+.navigation__mobile-item {
+  margin: 0;
+  padding: 0;
+}
+
+.navigation__mobile-item:last-child {
+  margin-top: auto;
+}
+
+.navigation__mobile-link {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.navigation__mobile-link_active {
+  border-bottom: 2px solid #ffffff;
+}
+
+@media (min-width: 768px) {
+  .navigation__button-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation__list_user {
+    gap: 14px;
+  }
+
+  .navigation__list_user .navigation__link {
+    font-size: 10px;
+  }
+
+  .navigation__button {
+    padding: 5px 12px;
+
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation__list_device_desktop {
+    display: none;
+  }
 }
