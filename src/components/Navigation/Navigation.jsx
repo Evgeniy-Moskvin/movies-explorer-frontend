@@ -43,7 +43,7 @@ const Navigation = ({ promo, loggedIn }) => {
         </ul>
       }
 
-      <div className={`navigation__mobile ${isOpen && 'navigation__mobile_active'}`}>
+      {/*<div className={`navigation__mobile ${isOpen ? 'navigation__mobile_active' : ''}`}>
         <button type="button" className="navigation__button-close" onClick={() => {setOpen(!isOpen)}}></button>
 
         <ul className="navigation__mobile-list">
@@ -60,7 +60,7 @@ const Navigation = ({ promo, loggedIn }) => {
             <NavLink to="/profile" className="navigation__link-profile link-animate">Аккаунт</NavLink>
           </li>
         </ul>
-      </div>
+      </div>*/}
 
     </nav>
   );

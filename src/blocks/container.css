@@ -26,11 +26,37 @@
     padding-left: 30px;
     padding-right: 30px;
   }
+
+  .container_block_footer {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
   .container_block_header {
     padding-left: 14px;
     padding-right: 14px;
+  }
+
+  .container_block_about-me {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .container_block_portfolio {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .container_block_footer {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
