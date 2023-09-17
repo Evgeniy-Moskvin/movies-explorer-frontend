@@ -42,16 +42,14 @@
 }
 
 .search-form__input:focus {
+  outline: none;
+
   border-color: #4285f4;
 }
 
 .search-form__input::-webkit-search-cancel-button {
   display: none;
   -webkit-appearance: none;
-}
-
-.search-form__input:focus {
-  outline: none;
 }
 
 .search-form__input::placeholder {
