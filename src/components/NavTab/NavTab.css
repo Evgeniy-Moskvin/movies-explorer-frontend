@@ -31,3 +31,13 @@
   text-decoration-skip-ink: none;
   color: #ffffff;
 }
+
+@media (max-width: 480px) {
+  .nav-tab__list {
+    gap: 24px;
+  }
+
+  .nav-tab__link {
+    font-size: 11px;
+  }
+}

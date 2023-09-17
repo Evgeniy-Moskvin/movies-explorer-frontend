@@ -14,9 +14,22 @@
   padding-right: 30px;
 }
 
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .container_block_header {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
 @media (max-width: 480px) {
   .container_block_header {
-    max-width: calc(1140px + 14px + 14px);
     padding-left: 14px;
     padding-right: 14px;
   }
