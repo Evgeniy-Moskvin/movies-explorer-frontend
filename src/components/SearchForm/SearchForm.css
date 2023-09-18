@@ -141,3 +141,20 @@
   line-height: 18px;
   color: #ffffff;
 }
+
+@media (max-width: 768px) {
+  .search-form {
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form__input {
+    font-size: 11px;
+  }
+
+  .search-form__switcher-text {
+    font-size: 11px;
+  }
+}

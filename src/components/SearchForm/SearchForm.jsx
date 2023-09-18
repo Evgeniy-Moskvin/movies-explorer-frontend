@@ -3,7 +3,7 @@ import './SearchForm.css';
 
 const SearchForm = () => {
   return (
-    <div className="container">
+    <div className="container container_block_search">
       <div className="search-form">
         <form className="search-form__form">
           <div className="search-form__search">

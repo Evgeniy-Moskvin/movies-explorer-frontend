@@ -7,7 +7,7 @@ const MoviesCardList = ({isSave}) => {
     <>
       {!isSave ?
         <div className="movies-card-list">
-          <div className="container">
+          <div className="container container_block_films">
             <ul className="movies-card-list__grid">
               <li className="movies-card-list__item">
                 <MoviesCard isLike={false} isSave={false}/>
