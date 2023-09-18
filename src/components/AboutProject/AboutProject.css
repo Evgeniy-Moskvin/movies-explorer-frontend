@@ -25,7 +25,7 @@
   font-weight: 400;
   font-style: normal;
   font-size: 22px;
-  line-height: 1;
+  line-height: normal;
   letter-spacing: -0.8px;
   color: #ffffff;
 }
@@ -42,7 +42,7 @@
 
 .about-project__time-line {
   display: grid;
-  grid-template-columns: minmax(100px, 1fr) 4fr;
+  grid-template-columns: minmax(140px, 1fr) 4fr;
 }
 
 .about-project__time-block {
@@ -56,7 +56,7 @@
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
-  line-height: 1;
+  line-height: normal;
   text-align: center;
 }
 
@@ -92,14 +92,14 @@
   .about-project__row {
     gap: 30px;
 
-    margin-bottom: 90px;
+    margin-bottom: 87px;
   }
 }
 
 @media (max-width: 480px) {
   .about-project {
     padding-top: 70px;
-    padding-bottom: 70px;
+    padding-bottom: 68px;
   }
 
   .about-project__row {
@@ -130,8 +130,12 @@
   }
 
   .about-project__time-caption {
-    margin-top: 10px;
+    margin-top: 7px;
 
     font-size: 11px;
+  }
+
+  .about-project__time-line {
+    grid-template-columns: minmax(100px, 1fr) 4fr;
   }
 }

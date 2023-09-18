@@ -128,12 +128,20 @@
 }
 
 @media (max-width: 480px) {
+  .about-me {
+    padding-top: 70px;
+  }
+
+  .about-me__title {
+    margin-bottom: 60px;
+  }
+
   .about-me__photo {
     height: 352px;
   }
 
   .about-me__name {
-    margin-bottom: 20px;
+    margin-bottom: 26px;
 
     font-size: 30px;
     letter-spacing: -1.2px;

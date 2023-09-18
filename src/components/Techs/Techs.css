@@ -89,7 +89,7 @@
 
   .tech__text {
     max-width: 450px;
-    margin-bottom: 80px;
+    margin-bottom: 83px;
 
     font-size: 12px;
     line-height: 18px;
@@ -124,18 +124,18 @@
   }
 
   .tech__title {
-    margin-bottom: 60px;
+    margin-bottom: 48px;
   }
 
   .tech__heading {
-    margin-bottom: 24px;
+    margin-bottom: 13px;
 
     font-size: 30px;
     letter-spacing: -1.2px;
   }
 
   .tech__text {
-    margin-bottom: 60px;
+    margin-bottom: 51px;
 
     font-size: 11px;
     line-height: 16px;
