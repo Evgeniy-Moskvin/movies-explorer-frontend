@@ -19,7 +19,7 @@ function App() {
         path="/"
         element={
           <>
-            <Header promo={true} loggedIn={false}/>
+            <Header promo={true} loggedIn={true}/>
             <Main/>
             <Footer/>
           </>

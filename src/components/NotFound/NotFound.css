@@ -1,8 +1,11 @@
 .not-found {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex: 1 0 auto;
 
   height: 100%;
   margin-top: auto;
@@ -38,4 +41,26 @@
   line-height: 1;
   text-decoration: none;
   color: #4285f4;
+}
+
+@media (max-width: 480px) {
+  .not-found__error-code {
+    margin-bottom: 10px;
+
+    font-size: 80px;
+  }
+
+  .not-found__title {
+    font-size: 12px;
+  }
+
+  .not-found__link {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+
+    font-size: 12px;
+    text-align: center;
+  }
 }
