@@ -4,7 +4,7 @@
 }
 
 .about-project__title {
-  margin: 0 0 70px;
+  margin: 0 0 67px;
 }
 
 .about-project__row {
@@ -93,6 +93,14 @@
     gap: 30px;
 
     margin-bottom: 87px;
+  }
+
+  .about-project__title {
+    margin-bottom: 68px;
+  }
+
+  .about-project__heading {
+    margin-bottom: 18px;
   }
 }
 
