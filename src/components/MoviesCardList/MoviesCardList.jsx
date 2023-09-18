@@ -28,14 +28,6 @@ const MoviesCardList = ({isSave}) => {
               <li className="movies-card-list__item">
                 <MoviesCard isLike={false} isSave={false}/>
               </li>
-
-              <li className="movies-card-list__item">
-                <MoviesCard isLike={false} isSave={false}/>
-              </li>
-
-              <li className="movies-card-list__item">
-                <MoviesCard isLike={false} isSave={false}/>
-              </li>
             </ul>
 
             <button type="button" className="movies-card-list__button-more button-animate">Ещё</button>

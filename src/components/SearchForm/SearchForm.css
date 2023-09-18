@@ -1,7 +1,7 @@
 .search-form {
   box-sizing: border-box;
-  padding-top: 50px;
-  padding-bottom: 70px;
+  padding-top: 60px;
+  padding-bottom: 66px;
 
   border-bottom: 1px solid #424242;
 }
@@ -145,7 +145,7 @@
 @media (max-width: 768px) {
   .search-form {
     padding-top: 80px;
-    padding-bottom: 50px;
+    padding-bottom: 47px;
   }
 }
 

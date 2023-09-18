@@ -17,7 +17,7 @@
 }
 
 .movies-card__body {
-  padding: 16px;
+  padding: 10px 16px 14px;
 }
 
 .movies-card__row {
@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .movies-card__name {
@@ -34,7 +34,7 @@
   font-weight: 500;
   font-style: normal;
   font-size: 13px;
-  line-height: 1;
+  line-height: normal;
   color: #ffffff;
 }
 
@@ -94,11 +94,11 @@
   }
 
   .movies-card__body {
-    padding: 14px;
+    padding: 8px 14px 11px;
   }
 
   .movies-card__row {
-    margin-bottom: 7px;
+    margin-bottom: 4px;
   }
 }
 
@@ -118,7 +118,7 @@
   }
 
   .movies-card__row {
-    margin-bottom: 6px;
+    margin-bottom: 2px;
   }
 
   .movies-card__duration {

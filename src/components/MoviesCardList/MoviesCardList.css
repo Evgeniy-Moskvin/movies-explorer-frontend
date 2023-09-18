@@ -48,7 +48,7 @@
   }
 
   .movies-card-list__button-more {
-    margin-top: 80px;
+    margin-top: 83px;
   }
 }
 
@@ -61,5 +61,11 @@
 
   .movies-card-list__button-more {
     margin-top: 76px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movies-card-list {
+    padding-top: 49px;
   }
 }
