@@ -1,32 +1,33 @@
 import { useState, useEffect } from "react";
 import './Navigation.css';
-import { NavLink } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 
 const Navigation = ({ promo, loggedIn }) => {
 
   const [isOpen, setOpen] = useState();
+  const { pathname } = useLocation();
+
   useEffect(() => {
     setOpen(false);
-  }, []);
+  }, [pathname]);
 
   return (
     <nav className="navigation">
-      { !promo &&
-        <ul className="navigation__list navigation__list_device_desktop">
-          <li className="navigation__item">
-            <NavLink to="/movies" className="navigation__link link-animate">Фильмы</NavLink>
-          </li>
-          <li className="navigation__item">
-            <NavLink to="/saved-movies" className="navigation__link link-animate">Сохранённые фильмы</NavLink>
-          </li>
-        </ul>
-      }
 
       { loggedIn ?
         <>
+          <ul className="navigation__list navigation__list_device_desktop">
+            <li className="navigation__item">
+              <NavLink to="/movies" className="navigation__link link-animate">Фильмы</NavLink>
+            </li>
+            <li className="navigation__item">
+              <NavLink to="/saved-movies" className="navigation__link link-animate">Сохранённые фильмы</NavLink>
+            </li>
+          </ul>
+
           <ul className="navigation__list navigation__list_user navigation__list_device_desktop">
             <li className="navigation__item">
-              <NavLink to="/profile" className="navigation__link-profile link-animate">Аккаунт</NavLink>
+              <NavLink to="/profile" className={`navigation__link-profile link-animate ${promo ? 'navigation__link-profile_theme_blue' : ''}`}>Аккаунт</NavLink>
             </li>
           </ul>
 
@@ -43,7 +44,7 @@ const Navigation = ({ promo, loggedIn }) => {
         </ul>
       }
 
-      {/*<div className={`navigation__mobile ${isOpen ? 'navigation__mobile_active' : ''}`}>
+      <div className={`navigation__mobile ${isOpen ? 'navigation__mobile_active' : ''}`}>
         <button type="button" className="navigation__button-close" onClick={() => {setOpen(!isOpen)}}></button>
 
         <ul className="navigation__mobile-list">
@@ -60,7 +61,7 @@ const Navigation = ({ promo, loggedIn }) => {
             <NavLink to="/profile" className="navigation__link-profile link-animate">Аккаунт</NavLink>
           </li>
         </ul>
-      </div>*/}
+      </div>
 
     </nav>
   );
