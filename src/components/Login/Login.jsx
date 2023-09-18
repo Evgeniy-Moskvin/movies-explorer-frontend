@@ -9,14 +9,13 @@ const Login = () => {
         <img src={logo} alt="Лого" className="logo"/>
       </Link>
 
-      <p className="user-form__title">Добро пожаловать!</p>
+      <p className="user-form__title">Рады видеть!</p>
 
       <form className="user-form__form">
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">Имя</span>
             <input type="text" className="user-form__input"/>
-            <span className="user-form__error-message"></span>
           </label>
         </div>
 
@@ -24,7 +23,6 @@ const Login = () => {
           <label className="user-form__group">
             <span className="user-form__name">E-mail</span>
             <input type="email" className="user-form__input"/>
-            <span className="user-form__error-message"></span>
           </label>
         </div>
 

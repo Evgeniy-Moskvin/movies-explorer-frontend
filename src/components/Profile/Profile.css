@@ -1,10 +1,13 @@
 .profile {
+  position: relative;
+
+  flex: 1 0 auto;
+
   box-sizing: border-box;
-  max-width: 410px;
+  max-width: calc(410px + 30px + 30px);
   width: 100%;
   margin: 0 auto;
-  padding-top: 74px;
-  padding-bottom: 70px;
+  padding: 74px 30px 70px;
 }
 
 .profile__title {
@@ -76,11 +79,14 @@
   color: #ffffff;
 
   background: none;
-  border: none;
+  border: 1px solid transparent;
+
+  transition: border-color 0.22s linear;
 }
 
 .profile__input:focus {
   outline: none;
+  border-color: #4285f4;
 }
 
 .profile__controls {
@@ -120,4 +126,40 @@
 
 .profile__controls-button_logout {
   color: #ee3465
+}
+
+@media (max-width: 768px) {
+  .profile {
+    padding-top: 236px;
+  }
+
+  .profile__info {
+    margin-bottom: 210px;
+  }
+
+  .profile__title {
+    margin-bottom: 96px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile {
+    padding-top: 70px;
+    padding-bottom: 40px;
+  }
+
+  .profile__title {
+    margin-bottom: 80px;
+  }
+
+  .profile__controls {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    right: 30px;
+  }
+
+  .profile__controls-button {
+    font-size: 12px;
+  }
 }
