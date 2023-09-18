@@ -1,6 +1,6 @@
 import React from 'react';
 import './AboutMe.css';
-import photo from '../../images/evgeniy-moskvin.jpeg';
+import photo from '../../images/evgeniy-moskvin.jpg';
 
 const AboutMe = () => {
   return (
