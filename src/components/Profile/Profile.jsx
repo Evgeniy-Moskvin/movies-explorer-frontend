@@ -1,5 +1,6 @@
 import React from 'react';
 import './Profile.css';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   return (
@@ -24,7 +25,7 @@ const Profile = () => {
             <button type="submit" className="profile__controls-button button-animate">Редактировать</button>
           </li>
           <li className="profile__controls-item">
-            <button type="button" className="profile__controls-button profile__controls-button_logout button-animate">Выйти из аккаунта</button>
+            <Link to="/signin" className="profile__controls-button profile__controls-button_logout button-animate">Выйти из аккаунта</Link>
           </li>
         </ul>
       </form>
