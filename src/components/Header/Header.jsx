@@ -9,7 +9,7 @@ const Header = ({ promo, loggedIn }) => {
     <header className={`header ${promo ? 'header_bg-color_blue' : ''}`}>
       <div className="container container_block_header">
         <div className="header__row">
-          <Link to="/" className="header__logo">
+          <Link to="/" className="header__logo link-animate">
             <img src={logo} alt="Лого" className="logo"/>
           </Link>
 

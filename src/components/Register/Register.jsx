@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Register = () => {
   return (
     <div className="user-form">
-      <Link to="/" className="user-form__logo">
+      <Link to="/" className="user-form__logo link-animate">
         <img src={logo} alt="Лого" className="logo"/>
       </Link>
 
