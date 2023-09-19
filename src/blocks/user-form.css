@@ -39,6 +39,7 @@
 }
 
 .user-form__group {
+  position: relative;
   display: block;
 }
 
@@ -88,8 +89,11 @@
 }
 
 .user-form__error-message {
+  position: absolute;
+  left: 0;
+  bottom: -22px;
+
   display: inline-block;
-  margin-top: 10px;
 
   font-weight: 400;
   font-style: normal;
@@ -99,7 +103,7 @@
 }
 
 .user-form__bottom {
-  margin-top: 46px;
+  margin-top: 68px;
 }
 
 .user-form__bottom_offset-top_large {

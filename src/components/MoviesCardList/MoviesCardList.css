@@ -3,6 +3,10 @@
   padding-bottom: 80px;
 }
 
+.movies-card-list_theme_saved-films {
+  margin-bottom: 140px;
+}
+
 .movies-card-list__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

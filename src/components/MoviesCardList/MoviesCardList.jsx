@@ -34,7 +34,7 @@ const MoviesCardList = ({isSave}) => {
           </div>
         </div>
         :
-        <div className="movies-card-list">
+        <div className="movies-card-list movies-card-list_theme_saved-films">
           <div className="container">
             <ul className="movies-card-list__grid">
               <li className="movies-card-list__item">

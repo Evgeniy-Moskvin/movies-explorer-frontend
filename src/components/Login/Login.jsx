@@ -23,6 +23,7 @@ const Login = () => {
           <label className="user-form__group">
             <span className="user-form__name">Пароль</span>
             <input name="password" type="password" placeholder="Пароль" className="user-form__input" required/>
+            <span className="user-form__error-message">Что-то пошло не так...</span>
           </label>
         </div>
 
