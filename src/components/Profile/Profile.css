@@ -149,6 +149,9 @@
 
 @media (max-width: 480px) {
   .profile {
+    display: flex;
+    flex-direction: column;
+
     padding-top: 70px;
     padding-bottom: 40px;
   }
@@ -157,11 +160,21 @@
     margin-bottom: 80px;
   }
 
+  .profile__form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .profile__info {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
   .profile__controls {
-    position: absolute;
-    bottom: 40px;
-    left: 30px;
-    right: 30px;
+    margin-top: 30px;
   }
 
   .profile__controls-button {
