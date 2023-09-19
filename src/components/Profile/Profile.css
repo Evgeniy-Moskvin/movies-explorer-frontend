@@ -16,7 +16,7 @@
   font-weight: 500;
   font-style: normal;
   font-size: 24px;
-  line-height: 1;
+  line-height: normal;
   text-align: center;
   color: #ffffff;
 }
@@ -39,7 +39,7 @@
 
   box-sizing: unset;
   margin: 0;
-  padding: 17px 0;
+  padding: 15px 0;
 
   border-bottom: 1px solid #424242;
 }
@@ -60,7 +60,7 @@
   font-weight: 500;
   font-style: normal;
   font-size: 11px;
-  line-height: 1;
+  line-height: normal;
   text-decoration: none;
   color: #ffffff;
 }
@@ -74,7 +74,7 @@
   font-weight: 500;
   font-style: normal;
   font-size: 11px;
-  line-height: 1;
+  line-height: normal;
   text-align: right;
   color: #ffffff;
 
@@ -99,7 +99,7 @@
 }
 
 .profile__controls-item {
-  margin: 0 0 16px 0;
+  margin: 0 0 13px 0;
   padding: 0;
 }
 
@@ -114,7 +114,7 @@
   font-weight: 400;
   font-style: normal;
   font-size: 13px;
-  line-height: 1;
+  line-height: normal;
   text-align: center;
   color: #ffffff;
 
@@ -139,6 +139,10 @@
 
   .profile__title {
     margin-bottom: 96px;
+  }
+
+  .profile__row {
+    padding: 14px 0;
   }
 }
 

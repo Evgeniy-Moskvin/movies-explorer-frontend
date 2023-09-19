@@ -218,4 +218,11 @@
 
     padding: 144px 10px 46px;
   }
+
+  .navigation__button-close {
+    width: 40px;
+    height: 43px;
+
+    background-size: 36px;
+  }
 }
