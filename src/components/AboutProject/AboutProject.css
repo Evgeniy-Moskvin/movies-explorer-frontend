@@ -51,7 +51,7 @@
   align-items: center;
 
   box-sizing: border-box;
-  height: 36px;
+  padding: 9px 14px 10px;
 
   font-weight: 400;
   font-style: normal;
@@ -134,6 +134,8 @@
   }
 
   .about-project__time-block {
+    padding: 11px 10px;
+
     font-size: 11px;
   }
 

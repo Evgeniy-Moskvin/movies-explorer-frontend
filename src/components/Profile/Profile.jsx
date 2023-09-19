@@ -35,7 +35,12 @@ const Profile = () => {
           {!isEdit ?
             <>
               <li className="profile__controls-item">
-                <button type="button" className="profile__controls-button button-animate" onClick={(e) => {setIsEdit(true)}}>Редактировать</button>
+                <button type="button" className="profile__controls-button button-animate"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setIsEdit(true)
+                        }}
+                >Редактировать</button>
               </li>
               <li className="profile__controls-item">
                 <Link to="/signin" className="profile__controls-button profile__controls-button_logout button-animate">Выйти из аккаунта</Link>

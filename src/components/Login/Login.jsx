@@ -27,7 +27,7 @@ const Login = () => {
         </div>
 
         <div className="user-form__bottom user-form__bottom_offset-top_large">
-          <button type="submit" className="user-form__button button-animate">Войти</button>
+          <button type="submit" className="form-button user-form__button button-animate">Войти</button>
           <p className="user-form__text">Ещё не зарегистрированы? <Link to="/signup" className="user-form__link link-animate">Регистрация</Link></p>
         </div>
       </form>

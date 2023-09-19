@@ -57,14 +57,13 @@
   box-sizing: border-box;
   max-width: 90px;
   width: 100%;
-  height: 60px;
   margin: 0;
-  padding: 5px;
+  padding: 21px 5px 22px;
 
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
-  line-height: 1;
+  line-height: normal;
   letter-spacing: -0.56px;
   text-align: center;
   color: #ffffff;
@@ -97,7 +96,6 @@
 
   .tech__item {
     max-width: 84px;
-    height: 57px;
 
     font-size: 12px;
     letter-spacing: -0.48px;

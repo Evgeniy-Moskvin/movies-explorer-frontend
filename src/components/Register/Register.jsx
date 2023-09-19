@@ -35,7 +35,7 @@ const Register = () => {
         </div>
 
         <div className="user-form__bottom">
-          <button type="submit" className="user-form__button button-animate">Зарегистрироваться</button>
+          <button type="submit" className="form-button button-animate">Зарегистрироваться</button>
           <p className="user-form__text">Уже зарегистрированы? <Link to="/signin" className="user-form__link link-animate">Войти</Link></p>
         </div>
       </form>
