@@ -99,6 +99,8 @@
 }
 
 .profile__controls-item {
+  position: relative;
+
   margin: 0 0 13px 0;
   padding: 0;
 }
@@ -127,6 +129,22 @@
 
 .profile__controls-button_logout {
   color: #ee3465
+}
+
+.profile__error-message {
+    position: absolute;
+    top: -33px;
+    left: 0;
+
+    display: inline-block;
+    width: 100%;
+
+    font-weight: 400;
+    font-style: normal;
+    font-size: 11px;
+    line-height: normal;
+    text-align: center;
+    color: #ff004c;
 }
 
 @media (max-width: 768px) {

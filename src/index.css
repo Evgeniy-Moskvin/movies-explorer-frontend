@@ -8,6 +8,7 @@
 @import "blocks/button-animate.css";
 @import "blocks/logo.css";
 @import "blocks/user-form.css";
+@import "blocks/form-button.css";
 
 html {
   scroll-behavior: smooth;
