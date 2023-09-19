@@ -21,11 +21,11 @@ const AboutProject = () => {
 
         <div className="about-project__time-line">
           <div className="about-project__time-col">
-            <div className="about-project__time-block about-project__time-block-1">1 неделя</div>
+            <div className="about-project__time-block about-project__time-block_theme_primary">1 неделя</div>
             <p className="about-project__time-caption">Back-end</p>
           </div>
           <div className="about-project__time-col">
-            <div className="about-project__time-block about-project__time-block-2">4 недели</div>
+            <div className="about-project__time-block about-project__time-block_theme_secondary">4 недели</div>
             <p className="about-project__time-caption">Front-end</p>
           </div>
         </div>

@@ -60,13 +60,13 @@
   text-align: center;
 }
 
-.about-project__time-block-1 {
+.about-project__time-block_theme_primary {
   color: #000000;
 
   background-color: #3ddc84;
 }
 
-.about-project__time-block-2 {
+.about-project__time-block_theme_secondary {
   color: #ffffff;
 
   background-color: #303030;
