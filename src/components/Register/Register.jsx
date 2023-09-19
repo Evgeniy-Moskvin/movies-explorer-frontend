@@ -15,21 +15,21 @@ const Register = () => {
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">Имя</span>
-            <input type="text" placeholder="Имя" className="user-form__input"/>
+            <input name="name" type="text" placeholder="Имя" className="user-form__input" required minlength="2" maxlength="30"/>
           </label>
         </div>
 
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">E-mail</span>
-            <input type="email" placeholder="E-mail" className="user-form__input"/>
+            <input name="email" type="email" placeholder="E-mail" className="user-form__input" required/>
           </label>
         </div>
 
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">Пароль</span>
-            <input type="password" placeholder="Пароль" className="user-form__input user-form__input_error"/>
+            <input name="password" type="password" placeholder="Пароль" className="user-form__input user-form__input_error" required/>
             <span className="user-form__error-message">Что-то пошло не так...</span>
           </label>
         </div>

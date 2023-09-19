@@ -15,15 +15,14 @@ const Login = () => {
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">E-mail</span>
-            <input type="email" placeholder="E-mail" className="user-form__input"/>
+            <input name="email" type="email" placeholder="E-mail" className="user-form__input" required/>
           </label>
         </div>
 
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">Пароль</span>
-            <input type="password" placeholder="Пароль" className="user-form__input user-form__input_error"/>
-            <span className="user-form__error-message">Что-то пошло не так...</span>
+            <input name="password" type="password" placeholder="Пароль" className="user-form__input" required/>
           </label>
         </div>
 

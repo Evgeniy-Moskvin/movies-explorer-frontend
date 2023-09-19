@@ -7,12 +7,12 @@ const SearchForm = () => {
       <div className="search-form">
         <form className="search-form__form">
           <div className="search-form__search">
-            <input type="search" className="search-form__input" placeholder="Фильм"/>
+            <input name="search" type="search" className="search-form__input" placeholder="Фильм" required/>
             <button type="submit" className="search-form__button button-animate"></button>
           </div>
 
           <label className="search-form__switcher">
-            <input type="checkbox" className="search-form__checkbox"/>
+            <input name="shorts" type="checkbox" className="search-form__checkbox"/>
             <span className="search-form__custom-checkbox"></span>
             <span className="search-form__switcher-text">Короткометражки</span>
           </label>
