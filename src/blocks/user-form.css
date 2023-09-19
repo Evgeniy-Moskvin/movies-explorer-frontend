@@ -15,11 +15,11 @@
 .user-form__logo {
   display: block;
   width: 38px;
-  margin-bottom: 40px;
+  margin-bottom: 42px;
 }
 
 .user-form__title {
-  margin: 0 0 40px 0;
+  margin: 0 0 44px 0;
 
   font-weight: 500;
   font-style: normal;
@@ -35,7 +35,7 @@
 }
 
 .user-form__row {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .user-form__group {
@@ -94,16 +94,16 @@
   font-weight: 400;
   font-style: normal;
   font-size: 10px;
-  line-height: 1;
+  line-height: normal;
   color: #ee3465;
 }
 
 .user-form__bottom {
-  margin-top: 70px;
+  margin-top: 46px;
 }
 
 .user-form__bottom_offset-top_large {
-  margin-top: 180px;
+  margin-top: 158px;
 }
 
 .user-form__button {
@@ -118,7 +118,7 @@
   font-weight: 500;
   font-style: normal;
   font-size: 14px;
-  line-height: 1;
+  line-height: normal;
   text-align: center;
   color: #ffffff;
 
@@ -130,12 +130,12 @@
 }
 
 .user-form__text {
-  margin: 16px 0 0 0;
+  margin: 17px 0 0 0;
 
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
-  line-height: 1;
+  line-height: normal;
   text-align: center;
   color: #8b8b8b;
 }
@@ -144,7 +144,7 @@
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
-  line-height: 1;
+  line-height: normal;
   text-decoration: none;
   color: #4285F4;
 }
@@ -155,11 +155,11 @@
   }
 
   .user-form__logo {
-    margin: 0 auto 50px;
+    margin: 0 auto 52px;
   }
 
   .user-form__title {
-    margin-bottom: 80px;
+    margin-bottom: 84px;
 
     text-align: center;
   }
