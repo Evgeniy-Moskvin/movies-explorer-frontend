@@ -15,7 +15,7 @@ const Register = () => {
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">Имя</span>
-            <input name="name" type="text" placeholder="Имя" className="user-form__input" required minlength="2" maxlength="30"/>
+            <input name="name" type="text" placeholder="Имя" className="user-form__input" required minLength="2" maxLength="30"/>
           </label>
         </div>
 
