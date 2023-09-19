@@ -147,7 +147,7 @@
 .navigation__mobile-list {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 
   box-sizing: border-box;
   height: 100%;
@@ -169,10 +169,13 @@
 }
 
 .navigation__mobile-link {
+  display: inline-block;
+  padding-bottom: 3px;
+
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
-  line-height: 1;
+  line-height: normal;
   text-decoration: none;
   color: #ffffff;
 }
@@ -214,15 +217,19 @@
   }
 
   .navigation__mobile-list {
-    gap: 24px;
+    gap: 18px;
 
     padding: 144px 10px 46px;
   }
 
-  .navigation__button-close {
+  .navigation__mobile-link {
+    padding-bottom: 6px;
+  }
+
+  /*.navigation__button-close {
     width: 40px;
     height: 43px;
 
     background-size: 36px;
-  }
+  }*/
 }
