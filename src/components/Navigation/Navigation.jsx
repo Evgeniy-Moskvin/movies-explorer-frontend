@@ -18,10 +18,10 @@ const Navigation = ({ promo, loggedIn }) => {
         <>
           <ul className="navigation__list navigation__list_device_desktop">
             <li className="navigation__item">
-              <NavLink to="/movies" className="navigation__link link-animate">Фильмы</NavLink>
+              <NavLink to="/movies" className={({isActive}) => `navigation__link link-animate ${isActive ? 'navigation__link_active' : ''}`}>Фильмы</NavLink>
             </li>
             <li className="navigation__item">
-              <NavLink to="/saved-movies" className="navigation__link link-animate">Сохранённые фильмы</NavLink>
+              <NavLink to="/saved-movies" className={({isActive}) => `navigation__link link-animate ${isActive ? 'navigation__link_active' : ''}`}>Сохранённые фильмы</NavLink>
             </li>
           </ul>
 

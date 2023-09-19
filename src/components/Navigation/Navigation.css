@@ -31,6 +31,10 @@
   color: #ffffff;
 }
 
+.navigation__link_active {
+  font-weight: 500;
+}
+
 .navigation__link-profile {
   display: inline-flex;
   align-items: center;
