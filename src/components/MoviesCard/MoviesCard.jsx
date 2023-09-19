@@ -8,7 +8,7 @@ const MoviesCard = ({ isLike, isSave }) => {
       <img src={image} alt="33 слова о дизайне" className="movies-card__image"/>
       <figcaption className="movies-card__body">
         <div className="movies-card__row">
-          <p className="movies-card__name">33 слова о дизайне</p>
+          <h2 className="movies-card__name">33 слова о дизайне</h2>
           {isSave ?
             <button type="button" className="movies-card__button-delete button-animate"></button>
             : <button type="button" className={`movies-card__button-like button-animate ${isLike && 'movies-card__button-like_active'}`}></button>

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Profile = () => {
   return (
-    <div className="profile">
-      <p className="profile__title">Привет, Евгений!</p>
+    <main className="profile">
+      <h1 className="profile__title">Привет, Евгений!</h1>
 
       <form className="profile__form">
         <ul className="profile__info">
@@ -29,7 +29,7 @@ const Profile = () => {
           </li>
         </ul>
       </form>
-    </div>
+    </main>
   );
 };
 

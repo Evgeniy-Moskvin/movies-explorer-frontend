@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
   return (
-    <div className="user-form">
+    <main className="user-form">
       <Link to="/" className="user-form__logo link-animate">
         <img src={logo} alt="Лого" className="logo"/>
       </Link>
 
-      <p className="user-form__title">Добро пожаловать!</p>
+      <h1 className="user-form__title">Добро пожаловать!</h1>
 
       <form className="user-form__form">
         <div className="user-form__row">
@@ -39,7 +39,7 @@ const Register = () => {
           <p className="user-form__text">Уже зарегистрированы? <Link to="/signin" className="user-form__link link-animate">Войти</Link></p>
         </div>
       </form>
-    </div>
+    </main>
   );
 };
 

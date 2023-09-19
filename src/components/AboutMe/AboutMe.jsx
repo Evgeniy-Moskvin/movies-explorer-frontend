@@ -10,7 +10,7 @@ const AboutMe = () => {
 
         <div className="about-me__row">
           <div className="about-me__text-wrap">
-            <p className="about-me__name">Евгений</p>
+            <h3 className="about-me__name">Евгений</h3>
             <p className="about-me__position">Фронтенд-разработчик, 29 лет</p>
             <p className="about-me__text">
               Я родился и живу во Владимире, закончил факультет информационных систем и технологий ВлГУ в 2015 году. Я
