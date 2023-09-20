@@ -1,0 +1,25 @@
+.section-title {
+  box-sizing: border-box;
+  padding-bottom: 22px;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px;
+  line-height: normal;
+  letter-spacing: -0.88px;
+
+  border-bottom: 1px solid #dadada;
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    padding-bottom: 28px;
+
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .section-title_theme_sm-dark-line {
+    border-bottom-color: #000000;
+  }
+}

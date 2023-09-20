@@ -1,0 +1,165 @@
+.user-form {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1 0 auto;
+
+  box-sizing: border-box;
+  max-width: calc(396px + 30px + 30px);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 70px 30px 30px;
+}
+
+.user-form__logo {
+  display: block;
+  width: 38px;
+  margin-bottom: 42px;
+}
+
+.user-form__title {
+  margin: 0 0 44px 0;
+
+  font-weight: 500;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.user-form__form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+.user-form__row {
+  margin-bottom: 22px;
+}
+
+.user-form__group {
+  position: relative;
+  display: block;
+}
+
+.user-form__name {
+  display: block;
+  margin-bottom: 10px;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10px;
+  line-height: 1;
+  color: #8b8b8b;
+}
+
+.user-form__input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 46px;
+  padding: 15px;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1;
+  color: #ffffff;
+
+  background-color: #2f2f2f;
+  border: 1px solid #2f2f2f;
+  border-radius: 8px;
+
+  transition: border-color 0.22s linear;
+}
+
+.user-form__input::placeholder {
+  color: #8b8b8b;
+}
+
+.user-form__input_error {
+  color: #ee3465;
+}
+
+.user-form__input:focus {
+  outline: none;
+
+  border-color: #4285f4;
+}
+
+.user-form__error-message {
+  position: absolute;
+  left: 0;
+  bottom: -22px;
+
+  display: inline-block;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10px;
+  line-height: normal;
+  color: #ee3465;
+}
+
+.user-form__bottom {
+  margin-top: 68px;
+}
+
+.user-form__bottom_offset-top_large {
+  margin-top: 158px;
+}
+
+.user-form__text {
+  margin: 17px 0 0 0;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: normal;
+  text-align: center;
+  color: #8b8b8b;
+}
+
+.user-form__link {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: normal;
+  text-decoration: none;
+  color: #4285F4;
+}
+
+@media (max-width: 480px) {
+  .user-form {
+    padding-top: 56px;
+  }
+
+  .user-form__logo {
+    margin: 0 auto 52px;
+  }
+
+  .user-form__title {
+    margin-bottom: 84px;
+
+    text-align: center;
+  }
+
+  .user-form__bottom {
+    margin-top: auto;
+  }
+
+  .user-form__button {
+    font-size: 12px;
+  }
+
+  .user-form__text {
+    margin-top: 14px;
+
+    font-size: 12px;
+  }
+
+  .user-form__link {
+    font-size: 12px;
+  }
+}

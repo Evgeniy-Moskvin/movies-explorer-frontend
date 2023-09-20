@@ -1,0 +1,91 @@
+.container {
+  box-sizing: border-box;
+  max-width: calc(1140px + 18px + 18px);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.container_block_header {
+  max-width: calc(1140px + 30px + 30px);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.container_block_films {
+  max-width: calc(1140px + 30px + 30px);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.container_block_search {
+  max-width: calc(1140px + 30px + 30px);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .container_block_header {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .container_block_footer {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .container_block_films {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .container_block_search {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .container_block_header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .container_block_about-me {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .container_block_portfolio {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .container_block_films {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .container_block_footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

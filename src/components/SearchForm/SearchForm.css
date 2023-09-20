@@ -1,0 +1,158 @@
+.search-form {
+  box-sizing: border-box;
+  padding-top: 60px;
+  padding-bottom: 66px;
+
+  border-bottom: 1px solid #424242;
+}
+
+.search-form__form {
+  display: block;
+
+  text-align: center;
+}
+
+.search-form__search {
+  position: relative;
+
+  margin-bottom: 40px;
+}
+
+.search-form__input {
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px calc(22px + 34px + 6px) 14px 22px;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 17px;
+  color: #ffffff;
+
+  background-color: #2f2f2f;
+  border: 1px solid #2f2f2f;
+  border-radius: 40px;
+
+  transition: border-color 0.22s linear;
+}
+
+.search-form__input:focus {
+  outline: none;
+
+  border-color: #4285f4;
+}
+
+.search-form__input::-webkit-search-cancel-button {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.search-form__input::placeholder {
+  color: #8b8b8b;
+}
+
+.search-form__button {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+
+  display: block;
+  padding: 0;
+  width: 34px;
+  height: 34px;
+
+  background: url("../../images/find.svg") center no-repeat;
+  background-size: contain;
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.search-form__switcher {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.search-form__checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.search-form__checkbox:checked + .search-form__custom-checkbox {
+  background-color: #2be080;
+}
+
+.search-form__checkbox:checked + .search-form__custom-checkbox::before {
+  left: calc(100% - 16px - 2px);
+}
+
+.search-form__custom-checkbox {
+  position: relative;
+
+  width: 36px;
+  height: 20px;
+  margin-right: 12px;
+
+  background-color: #ebebeb;
+  border-radius: 20px;
+
+  transition: background-color 0.22s linear;
+}
+
+.search-form__custom-checkbox::before {
+  content: "";
+
+  position: absolute;
+  top: 2px;
+  left: 2px;
+
+  width: 16px;
+  height: 16px;
+
+  background-color: #ffffff;
+  border-radius: 50%;
+
+  transition: left 0.12s linear;
+}
+
+.search-form__switcher-text {
+  display: inline-block;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    padding-top: 80px;
+    padding-bottom: 47px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form__input {
+    font-size: 11px;
+  }
+
+  .search-form__switcher-text {
+    font-size: 11px;
+  }
+}

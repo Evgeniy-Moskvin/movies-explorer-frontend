@@ -1,0 +1,148 @@
+.tech {
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  background-color: #272727;
+}
+
+.tech__title {
+  margin: 0 0 90px 0;
+}
+
+.tech__heading {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto 26px;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -2px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.tech__text {
+  max-width: 460px;
+  width: 100%;
+  margin: 0 auto 100px;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.56px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.tech__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.tech__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  max-width: 90px;
+  width: 100%;
+  margin: 0;
+  padding: 21px 5px 22px;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: normal;
+  letter-spacing: -0.56px;
+  text-align: center;
+  color: #ffffff;
+
+  background-color: #303030;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .tech {
+    padding-top: 92px;
+    padding-bottom: 90px;
+  }
+
+  .tech__title {
+    margin-bottom: 80px;
+  }
+
+  .tech__heading {
+    margin-bottom: 22px;
+  }
+
+  .tech__text {
+    max-width: 450px;
+    margin-bottom: 83px;
+
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .tech__item {
+    max-width: 84px;
+
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .tech__list {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .tech__item {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech {
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+    background-color: #202020;
+  }
+
+  .tech__title {
+    margin-bottom: 48px;
+  }
+
+  .tech__heading {
+    margin-bottom: 13px;
+
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .tech__text {
+    margin-bottom: 51px;
+
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+
+  .tech__list {
+    max-width: calc(84px + 10px + 84px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

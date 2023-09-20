@@ -1,0 +1,15 @@
+@import "./vendor/normalize.css";
+@import "./vendor/fonts/fonts.css";
+
+@import "blocks/page.css";
+@import "blocks/container.css";
+@import "blocks/link-animate.css";
+@import "blocks/section-title.css";
+@import "blocks/button-animate.css";
+@import "blocks/logo.css";
+@import "blocks/user-form.css";
+@import "blocks/form-button.css";
+
+html {
+  scroll-behavior: smooth;
+}
