@@ -1,4 +1,4 @@
-# movies-explorer-frontend
+# movies-explorer-frontend (4 этап)
 Репозиторий фронтенда дипломной работы
 
 ## Функционал:
