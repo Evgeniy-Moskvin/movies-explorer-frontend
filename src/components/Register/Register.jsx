@@ -6,11 +6,7 @@ import {useState} from 'react';
 import { useForm } from "react-hook-form";
 
 const Register = ({ handleRegister }) => {
-
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [name, setName] = React.useState('');
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const {
     register,
@@ -21,37 +17,19 @@ const Register = ({ handleRegister }) => {
     mode: 'onChange',
   });
 
-  const handleChangeEmail = (evt) => {
-    setEmail(evt.target.value);
-  }
-
-  const handleChangeName = (evt) => {
-    setName(evt.target.value);
-  }
-  const handleChangePassword = (evt) => {
-    setPassword(evt.target.value);
-  }
-
   const onSubmit = (data) => {
-    return new Promise((resolve) => {
-      const email = data.email;
-      const password = data.password;
-      const name = data.userName;
-      handleRegister(email, password, name)
-        .then((res) => {
-          if (res === 'Ошибка: 409') {
-            return setErrorMessage('Пользователь с данным E-mail уже зарегистрирован');
-          }
-          if (typeof res && res?.includes('Ошибка')) {
-            return setErrorMessage('Что-то пошло не так...');
-          }
-          setErrorMessage(null);
-          reset();
-        })
-        .catch((err) => {
+    handleRegister(data.userName, data.userEmail, data.userPassword)
+      .then(() => {
+        setErrorMessage('');
+        reset();
+      })
+      .catch((err) => {
+        setErrorMessage('Что-то пошло не так...');
+        if (err === 'Ошибка: 409') {
+          setErrorMessage('Пользователь с данным E-mail уже зарегистрирован!');
+        }
           console.error(err);
-        });
-    });
+      });
   }
 
 
@@ -93,7 +71,7 @@ const Register = ({ handleRegister }) => {
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">E-mail</span>
-            <input id="userEmail" name="email" type="email" placeholder="E-mail" className="user-form__input"
+            <input id="userEmail" name="email" type="email" placeholder="E-mail" className={`user-form__input ${errors?.userEmail ? 'user-form__input_error' : ''}`}
                {...register("userEmail", {
                  required: "Пожалуйста, укажите E-mail",
                  pattern: {
@@ -111,7 +89,7 @@ const Register = ({ handleRegister }) => {
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">Пароль</span>
-            <input id="userPassword" name="password" type="password" placeholder="Пароль" className="user-form__input user-form__input_error"
+            <input id="userPassword" name="password" type="password" placeholder="Пароль" className={`user-form__input ${errors?.userPassword ? 'user-form__input_error' : ''}`}
                {...register("userPassword", {
                  required: "Пожалуйста, задайте пароль",
                  minLength: {
@@ -127,7 +105,11 @@ const Register = ({ handleRegister }) => {
         </div>
 
         <div className="user-form__bottom">
-          <button type="submit" className="form-button button-animate">Зарегистрироваться</button>
+          <button type="submit" className={`form-button button-animate ${(!isValid || isSubmitting) ? 'form-button_disabled' : ''}`}
+            disabled={(!isValid || isSubmitting) ? 'disabled' : false}
+          >{isSubmitting ? "Подождите" : "Зарегистрироваться"}</button>
+          {errorMessage ?
+            (<p className="user-form__text_error">{errorMessage}</p>) : ''}
           <p className="user-form__text">Уже зарегистрированы? <Link to="/signin" className="user-form__link link-animate">Войти</Link></p>
         </div>
       </form>

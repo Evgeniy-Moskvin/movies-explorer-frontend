@@ -12,15 +12,15 @@ class Auth {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  signUp(userEmail, userPassword, userName) {
+  signUp(userName, userEmail, userPassword) {
     return fetch(`${this.url}/signup`, {
       method: 'POST',
       headers: this.headers,
       credentials: 'include',
       body: JSON.stringify({
+        name: userName,
         password: userPassword,
         email: userEmail,
-        name: userName,
       })
     }).then(this._gerResponseJson);
   }
@@ -59,8 +59,6 @@ class Auth {
 }
 
 export const auth = new Auth({
-  //baseUrl: 'https://auth.nomoreparties.co',
-  //baseUrl: 'http://localhost:3000',
   baseUrl: 'https://api.movies.emoskvin.nomoredomainsicu.ru',
   headers: {
     'Content-Type': 'application/json'

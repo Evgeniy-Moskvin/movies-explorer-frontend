@@ -1,7 +1,7 @@
 import './App.css';
 
 import React from 'react';
-import { Routes, Route, RouterProvider } from 'react-router-dom';
+import { Routes, Route, RouterProvider, useNavigate } from 'react-router-dom';
 
 import { auth } from '../../utils/auth';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -19,14 +19,27 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
-
   const [loggedIn, setLoggedIn] = React.useState(false);
 
-  const handleRegister = ({userEmail, userPassword, userName}) => {
+  const navigate = useNavigate();
+
+  const handleLogin = (userEmail, userPassword) => {
     return auth
-      .signUp(userEmail, userPassword, userName)
+      .signIn(userEmail, userPassword)
       .then((res) => {
-        console.log('success');
+        setLoggedIn(true);
+        navigate('/movies', {replace: true});
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  const handleRegister = (userName, userEmail, userPassword) => {
+    return auth
+      .signUp(userName, userEmail, userPassword)
+      .then((res) => {
+        handleLogin(userEmail, userPassword);
       })
       .catch((err) => {
         console.error(err);
