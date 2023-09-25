@@ -1,4 +1,4 @@
-class Api {
+class MainApi {
   constructor(options) {
     this.url = options.baseUrl;
     this.headers = options.headers;
@@ -10,6 +10,19 @@ class Api {
     }
 
     return Promise.reject(`Ошибка: ${res.status}`);
+  }
+
+  updateUserInfo({ name, about }) {
+    return fetch(`${this.url}/users/me`, {
+      method: 'PATCH',
+      headers: this.headers,
+      credentials: 'include',
+      body: JSON.stringify({
+        name: name,
+        about: about
+      })
+    })
+        .then(res => this._gerResponseJson(res));
   }
 
   getUserInfo() {
@@ -24,19 +37,6 @@ class Api {
     return fetch(`${this.url}/cards`, {
       headers: this.headers,
       credentials: 'include',
-    })
-      .then(res => this._gerResponseJson(res));
-  }
-
-  updateUserInfo({ name, about }) {
-    return fetch(`${this.url}/users/me`, {
-      method: 'PATCH',
-      headers: this.headers,
-      credentials: 'include',
-      body: JSON.stringify({
-        name: name,
-        about: about
-      })
     })
       .then(res => this._gerResponseJson(res));
   }
@@ -112,8 +112,8 @@ class Api {
   }
 }
 
-export const api = new Api({
-  baseUrl: 'https://api.movies.emoskvin.nomoredomainsicu.ru/',
+export const mainApi = new MainApi({
+  baseUrl: 'https://api.movies.emoskvin.nomoredomainsicu.ru',
   headers: {
     'Content-Type': 'application/json'
   }

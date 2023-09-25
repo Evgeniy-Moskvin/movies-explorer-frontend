@@ -1,9 +1,10 @@
 import './App.css';
 
-import React from 'react';
+import { useEffect, useState } from "react";
 import { Routes, Route, RouterProvider, useNavigate } from 'react-router-dom';
 
 import { auth } from '../../utils/auth';
+import { mainApi } from "../../utils/MainApi";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import Header from '../Header/Header';
@@ -18,8 +19,8 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState({});
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const navigate = useNavigate();
 
@@ -27,6 +28,7 @@ function App() {
     return auth
       .signIn(userEmail, userPassword)
       .then((res) => {
+        localStorage.setItem('userEmail', userEmail);
         setLoggedIn(true);
         navigate('/movies', {replace: true});
       })
@@ -49,6 +51,10 @@ function App() {
       });
   }
 
+  const handleUpdateUser = () => {
+
+  }
+
   const handleLogOut = () => {
     return auth
       .signOut()
@@ -57,8 +63,38 @@ function App() {
         setCurrentUser({});
         navigate('/', {replace: true});
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+          console.error(err)
+      });
   };
+
+  const tokenCheck = () => {
+    if (localStorage.getItem('userEmail')) {
+      auth
+        .tokenCheck()
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+          }
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+    }
+  }
+
+  useEffect(() => {
+      tokenCheck();
+      if (loggedIn) {
+          Promise.all([mainApi.getUserInfo()])
+              .then(([userData]) => {
+                  setCurrentUser(userData);
+              })
+              .catch((err) => {
+                  console.error(err);
+              })
+      }
+  }, [loggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

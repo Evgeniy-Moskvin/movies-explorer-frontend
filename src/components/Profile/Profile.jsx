@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Profile.css';
-import { Link } from 'react-router-dom';
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Profile = ({ handleLogOut }) => {
   const [isEdit, setIsEdit] = useState();
   const [err, setErr] = useState();
+
+  const currentUser = useContext(CurrentUserContext);
+
+  console.log(currentUser);
 
   const name = 'Евгений';
   const email = 'pochta@yandex.ru';

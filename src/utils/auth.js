@@ -46,7 +46,7 @@ class Auth {
     });
   }
 
-  tokenCheck(token) {
+  tokenCheck() {
     return fetch(`${this.url}/users/me`, {
       method: 'GET',
       headers: {
