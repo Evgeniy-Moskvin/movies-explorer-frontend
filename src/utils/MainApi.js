@@ -12,14 +12,14 @@ class MainApi {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  updateUserInfo({ name, about }) {
+  updateUserInfo({ userName, userEmail }) {
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
       credentials: 'include',
       body: JSON.stringify({
-        name: name,
-        about: about
+        name: userName,
+        email: userEmail
       })
     })
         .then(res => this._gerResponseJson(res));

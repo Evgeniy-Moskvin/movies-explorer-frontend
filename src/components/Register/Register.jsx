@@ -46,7 +46,7 @@ const Register = ({ handleRegister }) => {
           <label className="user-form__group">
             <span className="user-form__name">Имя</span>
             <input id="userName" name="name" type="text" placeholder="Имя" className={`user-form__input ${errors?.userName ? 'user-form__input_error' : ''}`}
-               {...register("userName", {
+               {...register('userName', {
                  required: 'Пожалуйста, укажите имя',
                  minLength: {
                    value: 2,
@@ -72,8 +72,8 @@ const Register = ({ handleRegister }) => {
           <label className="user-form__group">
             <span className="user-form__name">E-mail</span>
             <input id="userEmail" name="email" type="email" placeholder="E-mail" className={`user-form__input ${errors?.userEmail ? 'user-form__input_error' : ''}`}
-               {...register("userEmail", {
-                 required: "Пожалуйста, укажите E-mail",
+               {...register('userEmail', {
+                 required: 'Пожалуйста, укажите E-mail',
                  pattern: {
                    value: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i,
                    message: 'E-mail введен некорректно',
@@ -90,8 +90,8 @@ const Register = ({ handleRegister }) => {
           <label className="user-form__group">
             <span className="user-form__name">Пароль</span>
             <input id="userPassword" name="password" type="password" placeholder="Пароль" className={`user-form__input ${errors?.userPassword ? 'user-form__input_error' : ''}`}
-               {...register("userPassword", {
-                 required: "Пожалуйста, задайте пароль",
+               {...register('userPassword', {
+                 required: 'Пожалуйста, задайте пароль',
                  minLength: {
                    value: 6,
                    message: 'Пароль должен состоять минимум из 6 символов',

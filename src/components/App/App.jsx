@@ -1,7 +1,7 @@
 import './App.css';
 
 import { useEffect, useState } from "react";
-import { Routes, Route, RouterProvider, useNavigate } from 'react-router-dom';
+import {Routes, Route, useNavigate, useLocation} from 'react-router-dom';
 
 import { auth } from '../../utils/auth';
 import { mainApi } from "../../utils/MainApi";
@@ -23,6 +23,20 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+    useEffect(() => {
+        tokenCheck();
+        if (loggedIn) {
+            Promise.all([mainApi.getUserInfo()])
+                .then(([userData]) => {
+                    setCurrentUser(userData);
+                })
+                .catch((err) => {
+                    console.error(err);
+                })
+        }
+    }, [loggedIn]);
 
   const handleLogin = (userEmail, userPassword) => {
     return auth
@@ -51,8 +65,15 @@ function App() {
       });
   }
 
-  const handleUpdateUser = () => {
-
+  const handleUpdateUser = (data) => {
+      return mainApi
+          .updateUserInfo(data)
+          .then((data) => {
+            setCurrentUser(data);
+          })
+          .catch((err) => {
+              console.error(err);
+          });
   }
 
   const handleLogOut = () => {
@@ -61,6 +82,7 @@ function App() {
       .then(() => {
         setLoggedIn(false);
         setCurrentUser({});
+        localStorage.removeItem('userEmail');
         navigate('/', {replace: true});
       })
       .catch((err) => {
@@ -75,6 +97,7 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
+            navigate(location);
           }
         })
         .catch((err) => {
@@ -82,19 +105,6 @@ function App() {
         });
     }
   }
-
-  useEffect(() => {
-      tokenCheck();
-      if (loggedIn) {
-          Promise.all([mainApi.getUserInfo()])
-              .then(([userData]) => {
-                  setCurrentUser(userData);
-              })
-              .catch((err) => {
-                  console.error(err);
-              })
-      }
-  }, [loggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -150,7 +160,7 @@ function App() {
               element={
                 <>
                   <Header promo={false} loggedIn={loggedIn}/>
-                  <Profile handleLogOut={handleLogOut}/>
+                  <Profile handleLogOut={handleLogOut} handleUpdateUser={handleUpdateUser}/>
                 </>
               }
             ></ProtectedRoute>
