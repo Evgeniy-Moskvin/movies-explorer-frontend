@@ -52,11 +52,10 @@ function App() {
   const handleLogOut = () => {
     return auth
       .signOut()
-      .then((res) => {
+      .then(() => {
         setLoggedIn(false);
         setCurrentUser({});
-        localStorage.removeItem('userEmail');
-        navigate('/sign-in');
+        navigate('/', {replace: true});
       })
       .catch((err) => console.error(err));
   };
@@ -114,7 +113,7 @@ function App() {
               loggedIn={loggedIn}
               element={
                 <>
-                  <Header promo={false} loggedIn={loggedIn}/>
+                  <Header promo={false} loggedIn={loggedIn} handleLogOut={handleLogOut}/>
                   <Profile/>
                 </>
               }
@@ -134,7 +133,9 @@ function App() {
         <Route
           path="/signin"
           element={
-            <Login/>
+            <Login
+                handleLogin={handleLogin}
+            />
           }
         />
 

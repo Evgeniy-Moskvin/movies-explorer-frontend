@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Profile.css';
 import { Link } from 'react-router-dom';
 
-const Profile = () => {
+const Profile = ({ handleLogOut }) => {
   const [isEdit, setIsEdit] = useState();
   const [err, setErr] = useState();
 
@@ -13,6 +13,11 @@ const Profile = () => {
     setIsEdit(false);
     setErr(false);
   }, []);
+
+
+  const logOut = () => {
+    console.log(handleLogOut)
+  }
 
   return (
     <main className="profile">
@@ -43,7 +48,7 @@ const Profile = () => {
                 >Редактировать</button>
               </li>
               <li className="profile__controls-item">
-                <Link to="/signin" className="profile__controls-button profile__controls-button_logout button-animate">Выйти из аккаунта</Link>
+                <button type="button" className="profile__controls-button profile__controls-button_logout button-animate" onClick={logOut}>Выйти из аккаунта</button>
               </li>
             </>
             :

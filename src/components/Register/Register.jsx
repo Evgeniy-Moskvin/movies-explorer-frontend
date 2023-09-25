@@ -107,9 +107,8 @@ const Register = ({ handleRegister }) => {
         <div className="user-form__bottom">
           <button type="submit" className={`form-button button-animate ${(!isValid || isSubmitting) ? 'form-button_disabled' : ''}`}
             disabled={(!isValid || isSubmitting) ? 'disabled' : false}
-          >{isSubmitting ? "Подождите" : "Зарегистрироваться"}</button>
-          {errorMessage ?
-            (<p className="user-form__text_error">{errorMessage}</p>) : ''}
+          >{isSubmitting ? 'Подождите' : 'Зарегистрироваться'}</button>
+          {errorMessage ? (<p className="user-form__text_error">{errorMessage}</p>) : ''}
           <p className="user-form__text">Уже зарегистрированы? <Link to="/signin" className="user-form__link link-animate">Войти</Link></p>
         </div>
       </form>
