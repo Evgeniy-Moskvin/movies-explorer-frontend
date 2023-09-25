@@ -8,10 +8,8 @@ const Profile = ({ handleLogOut }) => {
 
   const currentUser = useContext(CurrentUserContext);
 
-  console.log(currentUser);
-
-  const name = 'Евгений';
-  const email = 'pochta@yandex.ru';
+  const name = currentUser.name;
+  const email = currentUser.email;
 
   useEffect(() => {
     setIsEdit(false);
@@ -20,23 +18,23 @@ const Profile = ({ handleLogOut }) => {
 
 
   const logOut = () => {
-    console.log(handleLogOut)
+    handleLogOut();
   }
 
   return (
     <main className="profile">
-      <h1 className="profile__title">Привет, Евгений!</h1>
+      <h1 className="profile__title">Привет, {currentUser.name}</h1>
 
-      <form className="profile__form">
+      <form name="profile" className="profile__form">
         <ul className="profile__info">
           <li className="profile__row">
             <span className="profile__name">Имя</span>
-            <input type="text" name="name" value={name} className="profile__input" disabled={!isEdit ? 'disabled' : ''}/>
+            <input id="userName" type="text" name="name" value={name} className="profile__input" disabled={!isEdit ? 'disabled' : ''}/>
           </li>
 
           <li className="profile__row">
             <span className="profile__name">E-mail</span>
-            <input type="text" name="name" value={email} className="profile__input" disabled={!isEdit ? 'disabled' : ''}/>
+            <input id="userEmail" type="text" name="name" value={email} className="profile__input" disabled={!isEdit ? 'disabled' : ''}/>
           </li>
         </ul>
 

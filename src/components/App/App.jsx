@@ -149,8 +149,8 @@ function App() {
               loggedIn={loggedIn}
               element={
                 <>
-                  <Header promo={false} loggedIn={loggedIn} handleLogOut={handleLogOut}/>
-                  <Profile/>
+                  <Header promo={false} loggedIn={loggedIn}/>
+                  <Profile handleLogOut={handleLogOut}/>
                 </>
               }
             ></ProtectedRoute>
