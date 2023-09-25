@@ -43,18 +43,12 @@ function App() {
         return moviesApi
             .getMovies()
             .then((res) => {
-                console.log('App', res);
-                res.json();
-            })
-            .then((res) => {
                 return res;
             })
             .catch((err) => {
                 return err;
             });
     };
-
-    handleMovies();
 
   const handleLogin = (userEmail, userPassword) => {
     return auth
