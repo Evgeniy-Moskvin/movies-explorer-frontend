@@ -5,6 +5,7 @@ import {Routes, Route, useNavigate, useLocation} from 'react-router-dom';
 
 import { auth } from '../../utils/auth';
 import { mainApi } from "../../utils/MainApi";
+import { moviesApi } from "../../utils/MoviesApi";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import Header from '../Header/Header';
@@ -37,6 +38,23 @@ function App() {
                 })
         }
     }, [loggedIn]);
+
+    const handleMovies = () => {
+        return moviesApi
+            .getMovies()
+            .then((res) => {
+                console.log('App', res);
+                res.json();
+            })
+            .then((res) => {
+                return res;
+            })
+            .catch((err) => {
+                return err;
+            });
+    };
+
+    handleMovies();
 
   const handleLogin = (userEmail, userPassword) => {
     return auth
@@ -128,7 +146,7 @@ function App() {
               element={
                 <>
                   <Header promo={false} loggedIn={loggedIn}/>
-                  <Movies isSave={false}/>
+                  <Movies isSave={false} handleMovies={handleMovies}/>
                   <Footer/>
                 </>
               }
