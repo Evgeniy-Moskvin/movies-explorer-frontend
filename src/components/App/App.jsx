@@ -38,13 +38,28 @@ function App() {
   const handleRegister = (userName, userEmail, userPassword) => {
     return auth
       .signUp(userName, userEmail, userPassword)
-      .then((res) => {
-        handleLogin(userEmail, userPassword);
+      .then(() => {
+        handleLogin(userEmail, userPassword)
+          .then(() => {
+            console.log('success');
+          });
       })
       .catch((err) => {
         console.error(err);
       });
   }
+
+  const handleLogOut = () => {
+    return auth
+      .signOut()
+      .then((res) => {
+        setLoggedIn(false);
+        setCurrentUser({});
+        localStorage.removeItem('userEmail');
+        navigate('/sign-in');
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
