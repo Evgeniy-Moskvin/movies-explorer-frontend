@@ -1,12 +1,12 @@
 import './App.css';
 
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import {Routes, Route, useNavigate, useLocation} from 'react-router-dom';
 
-import { auth } from '../../utils/auth';
-import { mainApi } from "../../utils/MainApi";
-import { moviesApi } from "../../utils/MoviesApi";
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import {auth} from '../../utils/auth';
+import {mainApi} from "../../utils/MainApi";
+import {moviesApi} from "../../utils/MoviesApi";
+import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -26,29 +26,29 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
-    useEffect(() => {
-        tokenCheck();
-        if (loggedIn) {
-            Promise.all([mainApi.getUserInfo()])
-                .then(([userData]) => {
-                    setCurrentUser(userData);
-                })
-                .catch((err) => {
-                    console.error(err);
-                })
-        }
-    }, [loggedIn]);
+  useEffect(() => {
+    tokenCheck();
+    if (loggedIn) {
+      Promise.all([mainApi.getUserInfo()])
+        .then(([userData]) => {
+          setCurrentUser(userData);
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    }
+  }, [loggedIn]);
 
-    const handleMovies = () => {
-        return moviesApi
-            .getMovies()
-            .then((res) => {
-                return res;
-            })
-            .catch((err) => {
-                return err;
-            });
-    };
+  const handleMovies = () => {
+    return moviesApi
+      .getMovies()
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
 
   const handleLogin = (userEmail, userPassword) => {
     return auth
@@ -78,14 +78,14 @@ function App() {
   }
 
   const handleUpdateUser = (data) => {
-      return mainApi
-          .updateUserInfo(data)
-          .then((data) => {
-            setCurrentUser(data);
-          })
-          .catch((err) => {
-              console.error(err);
-          });
+    return mainApi
+      .updateUserInfo(data)
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   const handleLogOut = () => {
@@ -98,7 +98,7 @@ function App() {
         navigate('/', {replace: true});
       })
       .catch((err) => {
-          console.error(err)
+        console.error(err)
       });
   };
 
@@ -113,7 +113,7 @@ function App() {
           }
         })
         .catch((err) => {
-            console.error(err);
+          console.error(err);
         });
     }
   }
@@ -192,12 +192,12 @@ function App() {
           path="/signin"
           element={
             <Login
-                handleLogin={handleLogin}
+              handleLogin={handleLogin}
             />
           }
         />
 
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </CurrentUserContext.Provider>
   )

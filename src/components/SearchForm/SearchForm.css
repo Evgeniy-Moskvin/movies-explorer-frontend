@@ -18,6 +18,26 @@
   margin-bottom: 40px;
 }
 
+.search-form__group {
+  position: relative;
+
+  display: block;
+}
+
+.search-form__error-message {
+  position: absolute;
+  left: 0;
+  bottom: -22px;
+
+  display: inline-block;
+
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10px;
+  line-height: normal;
+  color: #ee3465;
+}
+
 .search-form__input {
   display: flex;
   align-items: center;
