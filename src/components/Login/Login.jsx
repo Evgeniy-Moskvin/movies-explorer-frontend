@@ -50,6 +50,7 @@ const Login = ({ handleLogin }) => {
                        message: 'E-mail введен некорректно',
                      }
                    })}
+                   disabled={(isSubmitting) ? 'disabled' : false}
             />
             {errors?.userEmail && (
               <span className="user-form__error-message">{errors?.userEmail.message || 'Что-то пошло не так...'}</span>
@@ -68,6 +69,7 @@ const Login = ({ handleLogin }) => {
                        message: 'Пароль должен состоять минимум из 6 символов',
                      },
                    })}
+                   disabled={(isSubmitting) ? 'disabled' : false}
             />
             {errors?.userPassword && (
               <span className="user-form__error-message">{errors?.userPassword.message || 'Что-то пошло не так...'}</span>

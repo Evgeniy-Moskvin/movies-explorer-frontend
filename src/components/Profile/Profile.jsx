@@ -81,7 +81,7 @@ const Profile = ({ handleUpdateUser, handleLogOut }) => {
                      message: 'Имя должно состоять только из букв и пробела',
                    }
                  })}
-                 disabled={!isEdit ? 'disabled' : ''}
+                 disabled={(!isEdit || isSubmitting) ? 'disabled' : false}
               />
               {errors?.userName && (
                   <span className="user-form__error-message">{errors?.userName.message || 'Что-то пошло не так...'}</span>
@@ -100,7 +100,7 @@ const Profile = ({ handleUpdateUser, handleLogOut }) => {
                      message: 'E-mail введен некорректно',
                    }
                  })}
-                 disabled={!isEdit ? 'disabled' : false}
+                 disabled={(!isEdit || isSubmitting) ? 'disabled' : false}
               />
               {errors?.userEmail && (
                   <span className="user-form__error-message">{errors?.userEmail.message || 'Что-то пошло не так...'}</span>

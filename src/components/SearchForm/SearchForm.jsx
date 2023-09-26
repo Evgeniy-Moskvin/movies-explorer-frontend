@@ -53,6 +53,7 @@ const SearchForm = ({handleSearch, handleShorts, isSave}) => {
                      {...register('search', {
                          required: 'Нужно ввести ключевое слово',
                      })}
+                      disabled={(isSubmitting) ? 'disabled' : false}
                   />
                   {errors?.search && (
                       <span className="search-form__error-message">{errors?.search.message || 'Что-то пошло не так...'}</span>
@@ -65,6 +66,7 @@ const SearchForm = ({handleSearch, handleShorts, isSave}) => {
             <input id="toggleShorts" name="shorts" type="checkbox" className="search-form__checkbox"
                 {...register('toggleShorts')}
                 onChange={changeShorts}
+                   disabled={(isSubmitting) ? 'disabled' : false}
             />
             <span className="search-form__custom-checkbox"></span>
             <span className="search-form__switcher-text">Короткометражки</span>
