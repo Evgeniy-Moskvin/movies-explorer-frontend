@@ -94,7 +94,7 @@ function App() {
       .then(() => {
         setLoggedIn(false);
         setCurrentUser({});
-        localStorage.removeItem('userEmail');
+        localStorage.clear();
         navigate('/', {replace: true});
       })
       .catch((err) => {

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Profile.css';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import {useForm} from "react-hook-form";
@@ -9,10 +9,14 @@ const Profile = ({ handleUpdateUser, handleLogOut }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const userName = currentUser.name;
-  const userEmail = currentUser.email;
 
-  //console.log(currentUser);
+  useEffect(() => {
+    reset({
+      userName: currentUser.name,
+      userEmail: currentUser.email,
+    });
+  }, [currentUser]);
+
 
   const {
     register,
@@ -22,8 +26,8 @@ const Profile = ({ handleUpdateUser, handleLogOut }) => {
   } = useForm({
     mode: 'onChange',
     defaultValues: {
-      userName: userName,
-      userEmail: userEmail,
+      userName: currentUser.name,
+      userEmail: currentUser.email,
     },
   });
 

@@ -5,6 +5,7 @@ import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import {SHORT_DURATION} from "../../utils/config";
 
 import Preloader from "../Preloader/Preloader";
+import login from "../Login/Login";
 
 const Movies = ({isSave, handleMovies}) => {
   const currentUser = useContext(CurrentUserContext);
@@ -12,10 +13,9 @@ const Movies = ({isSave, handleMovies}) => {
   const [moviesInit, setMoviesInit] = useState([]); // Загруженные фильмы
   const [isShorts, setIsShorts] = useState(null); // Checkbox короткометражек
   const [moviesFiltered, setMoviesFiltered] = useState([]); // Отфильтрованные фильмы
-
+  const [isEmpty, setIsEmpty] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isEmptySearch, setIsEmptySearch] = useState(false);
 
 
   const filter = (movies, search = '', isShorts) => {
@@ -29,22 +29,20 @@ const Movies = ({isSave, handleMovies}) => {
   }
 
   const filterShorts = (movies) => {
-    console.log('do filterShorts');
-    /*return movies.filter((item) => item.duration < SHORT_DURATION);*/
+    return movies.filter((item) => item.duration < SHORT_DURATION);
   }
 
 
   const handleShorts = (isShorts) => {
-    console.log('handleShorts', isShorts);
     setIsShorts(isShorts);
     localStorage.setItem('isShorts', isShorts);
 
     if (isShorts) {
       setMoviesFiltered(filterShorts(moviesInit));
-      console.log('SHORTS moviesFiltered', moviesFiltered);
+      filterShorts(moviesFiltered).length === 0 && setIsEmpty(true);
     } else {
-      setMoviesFiltered(moviesFiltered);
-      console.log('FULL moviesFiltered', moviesFiltered);
+      setMoviesFiltered(moviesInit);
+      moviesFiltered.length === 0 && setIsEmpty(true);
     }
   }
 
@@ -58,8 +56,6 @@ const Movies = ({isSave, handleMovies}) => {
   }
 
   const handleSearch = (search, isShorts) => {
-    console.log('MOVIES | handleSearch');
-
     localStorage.setItem('search', search);
     localStorage.setItem('isShorts', isShorts);
 
@@ -86,28 +82,39 @@ const Movies = ({isSave, handleMovies}) => {
     localStorage.getItem('isShorts') === 'true' ? setIsShorts(true) : setIsShorts(false);
 
     if (localStorage.getItem('movies')) {
-      const movies = localStorage.getItem('movies');
-      setMoviesInit(JSON.parse(movies));
+      const movies = JSON.parse(localStorage.getItem('movies'));
+      setMoviesInit(movies);
       localStorage.getItem('isShorts') === 'true' ? setMoviesFiltered(filterShorts(movies)) : setMoviesFiltered(movies);
     }
   }, []);
 
   useEffect(() => {
     if (localStorage.getItem('search')) {
-
+      if (moviesFiltered.length === 0) {
+        setIsEmpty(true);
+      } else {
+        setIsEmpty(false);
+      }
+    }
+    else {
+      setIsEmpty(false);
     }
   }, [moviesFiltered]);
 
   return (
-    <main>
-      <SearchForm handleSearch={handleSearch} handleShorts={handleShorts} isShorts={isShorts} isSave={isSave}/>
+      <main>
+        <SearchForm handleSearch={handleSearch} handleShorts={handleShorts} isShorts={isShorts} isSave={isSave}/>
 
-      {isLoading ? (
-          <Preloader/>
-      ) : (
-          <MoviesCardList movies={movies} isShorts={isShorts} isSave={isSave}/>
-      )}
-    </main>
+        {isLoading ? (
+            <Preloader/>
+        ) : (
+            <>
+              {isEmpty ? <p className="text-empty">Ничего не найдено</p> : (
+                  <MoviesCardList movies={moviesFiltered} isShorts={isShorts} isSave={isSave}/>
+              )}
+            </>
+        )}
+      </main>
   );
 };
 

@@ -6,6 +6,7 @@ import { useWindowSize } from "@uidotdev/usehooks";
 import MoviesCard from '../MoviesCard/MoviesCard';
 import {MOVIES_ON_SIZES} from "../../utils/config";
 import savedMovies from "../SavedMovies/SavedMovies";
+import login from "../Login/Login";
 
 
 const MoviesCardList = ({ movies, isShorts, isSave}) => {
@@ -62,10 +63,8 @@ const MoviesCardList = ({ movies, isShorts, isSave}) => {
   return (
     <>
       {!isSave ?
-        <div className="movies-card-list">
+        <div className={`movies-card-list`}>
           <div className="container container_block_films">
-
-
             <ul className="movies-card-list__grid">
               {showMovieList.map((movie) => (
                   <li key={movie.id} className="movies-card-list__item">
@@ -76,26 +75,13 @@ const MoviesCardList = ({ movies, isShorts, isSave}) => {
                     />
                   </li>
               ))}
-
-
-              {/*<li className="movies-card-list__item">
-                <MoviesCard isLike={true} isSave={false}/>
-              </li>
-
-              <li className="movies-card-list__item">
-                <MoviesCard isLike={false} isSave={false}/>
-              </li>
-
-              <li className="movies-card-list__item">
-                <MoviesCard isLike={false} isSave={false}/>
-              </li>
-
-              <li className="movies-card-list__item">
-                <MoviesCard isLike={false} isSave={false}/>
-              </li>*/}
             </ul>
-
-            <button type="button" className="movies-card-list__button-more button-animate">Ещё</button>
+            {
+              !isSave &&
+              showMovieList.length >= MOVIES_ON_SIZES.SM.INIT_COUNT_ROW && showMovieList.length < movies.length && (
+                    <button type="button" className="movies-card-list__button-more button-animate" onClick={handleMore}>Ещё</button>
+                )
+            }
           </div>
         </div>
         :

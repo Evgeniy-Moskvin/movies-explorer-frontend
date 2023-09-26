@@ -4,6 +4,13 @@ import './MoviesCard.css';
 
 const MoviesCard = ({isSave, movie, isLike}) => {
 
+    const durationHours = () => {
+        return Math.floor(Number(movie.duration) / 60);
+    }
+
+    const durationMinutes = () => {
+        return Number(movie.duration) % 60;
+    }
 
     return (
         <a href={movie.trailerLink} target="_blank" rel="noreferrer" className="movies-card">
@@ -18,7 +25,9 @@ const MoviesCard = ({isSave, movie, isLike}) => {
                                       className={`movies-card__button-like button-animate ${isLike && 'movies-card__button-like_active'}`}></button>
                         }
                     </div>
-                    <span className="movies-card__duration">1ч 47м</span>
+                    <span className="movies-card__duration">{
+                        durationHours() >= 1 ? `${durationHours()}ч ${durationMinutes()}м` : `${durationMinutes()}м`
+                    }</span>
                 </figcaption>
             </figure>
         </a>
