@@ -1,10 +1,10 @@
 import React from 'react';
 import './Header.css';
 import logo from '../../images/logo.svg';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 
-const Header = ({ promo, loggedIn }) => {
+const Header = ({promo, loggedIn}) => {
   return (
     <header className={`header ${promo ? 'header_bg-color_blue' : ''}`}>
       <div className="container container_block_header">

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import logo from '../../images/logo.svg';
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import {Link} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
 
-const Login = ({ handleLogin }) => {
+const Login = ({handleLogin}) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const {
     register,
-    formState: { errors, isSubmitting, isValid },
+    formState: {errors, isSubmitting, isValid},
     handleSubmit,
     reset,
   } = useForm({
@@ -42,7 +42,8 @@ const Login = ({ handleLogin }) => {
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">E-mail</span>
-            <input id="userEmail" name="email" type="email" placeholder="E-mail" className={`user-form__input ${errors?.userEmail ? 'user-form__input_error' : ''}`}
+            <input id="userEmail" name="email" type="email" placeholder="E-mail"
+                   className={`user-form__input ${errors?.userEmail ? 'user-form__input_error' : ''}`}
                    {...register('userEmail', {
                      required: 'Пожалуйста, укажите E-mail',
                      pattern: {
@@ -61,7 +62,8 @@ const Login = ({ handleLogin }) => {
         <div className="user-form__row">
           <label className="user-form__group">
             <span className="user-form__name">Пароль</span>
-            <input id="userPassword" name="password" type="password" placeholder="Пароль" className={`user-form__input ${errors?.userPassword ? 'user-form__input_error' : ''}`}
+            <input id="userPassword" name="password" type="password" placeholder="Пароль"
+                   className={`user-form__input ${errors?.userPassword ? 'user-form__input_error' : ''}`}
                    {...register('userPassword', {
                      required: 'Пожалуйста, задайте пароль',
                      minLength: {
@@ -72,17 +74,21 @@ const Login = ({ handleLogin }) => {
                    disabled={(isSubmitting) ? 'disabled' : false}
             />
             {errors?.userPassword && (
-              <span className="user-form__error-message">{errors?.userPassword.message || 'Что-то пошло не так...'}</span>
+              <span
+                className="user-form__error-message">{errors?.userPassword.message || 'Что-то пошло не так...'}</span>
             )}
           </label>
         </div>
 
         <div className="user-form__bottom user-form__bottom_offset-top_large">
-          <button type="submit" className={`form-button user-form__button button-animate ${(!isValid || isSubmitting) ? 'form-button_disabled' : ''}`}
+          <button type="submit"
+                  className={`form-button user-form__button button-animate ${(!isValid || isSubmitting) ? 'form-button_disabled' : ''}`}
                   disabled={(!isValid || isSubmitting) ? 'disabled' : false}
           >{isSubmitting ? 'Подождите' : 'Войти'}</button>
           {errorMessage ? (<p className="user-form__text_error">{errorMessage}</p>) : ''}
-          <p className="user-form__text">Ещё не зарегистрированы? <Link to="/signup" className="user-form__link link-animate">Регистрация</Link></p>
+          <p className="user-form__text">Ещё не зарегистрированы? <Link to="/signup"
+                                                                        className="user-form__link link-animate">Регистрация</Link>
+          </p>
         </div>
       </form>
     </main>

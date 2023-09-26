@@ -1,7 +1,7 @@
 import './MoviesCardList.css';
 
-import { useEffect, useState } from "react";
-import { useWindowSize } from "@uidotdev/usehooks";
+import {useEffect, useState} from "react";
+import {useWindowSize} from "@uidotdev/usehooks";
 
 import MoviesCard from '../MoviesCard/MoviesCard';
 import {MOVIES_ON_SIZES} from "../../utils/config";
@@ -9,7 +9,7 @@ import savedMovies from "../SavedMovies/SavedMovies";
 import login from "../Login/Login";
 
 
-const MoviesCardList = ({ movies, isSave, handleLike, handleDislike, userMovies}) => {
+const MoviesCardList = ({movies, isSave, handleLike, handleDislike, userMovies}) => {
 
   const size = useWindowSize();
   const [isMount, setIsMount] = useState(true);
@@ -77,30 +77,31 @@ const MoviesCardList = ({ movies, isSave, handleLike, handleDislike, userMovies}
   }, [movies, moviesDetails.INIT_COUNT_RENDER]);
 
   return (
-      <div className="movies-card-list">
-        <div className="container container_block_films">
-          <ul className="movies-card-list__grid">
-            {showMovieList.map((movie) => (
-                <li key={movie.id} className="movies-card-list__item">
-                  <MoviesCard
-                    savedMovie={checkSavedMovies(userMovies, movie)}
-                      isSave={isSave}
-                      movie={movie}
-                      userMovie={userMovies}
-                      handleLike={handleLike}
-                    handleDislike={handleDislike}
-                  />
-                </li>
-            ))}
-          </ul>
-          {
-              !isSave &&
-              showMovieList.length >= MOVIES_ON_SIZES.SM.INIT_COUNT_ROW && showMovieList.length < movies.length && (
-                  <button type="button" className="movies-card-list__button-more button-animate" onClick={handleMore}>Ещё</button>
-              )
-          }
-        </div>
+    <div className="movies-card-list">
+      <div className="container container_block_films">
+        <ul className="movies-card-list__grid">
+          {showMovieList.map((movie) => (
+            <li key={movie.id} className="movies-card-list__item">
+              <MoviesCard
+                savedMovie={checkSavedMovies(userMovies, movie)}
+                isSave={isSave}
+                movie={movie}
+                userMovie={userMovies}
+                handleLike={handleLike}
+                handleDislike={handleDislike}
+              />
+            </li>
+          ))}
+        </ul>
+        {
+          !isSave &&
+          showMovieList.length >= MOVIES_ON_SIZES.SM.INIT_COUNT_ROW && showMovieList.length < movies.length && (
+            <button type="button" className="movies-card-list__button-more button-animate"
+                    onClick={handleMore}>Ещё</button>
+          )
+        }
       </div>
+    </div>
   );
 };
 

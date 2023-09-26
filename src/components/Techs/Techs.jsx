@@ -8,7 +8,8 @@ const Techs = () => {
         <h2 className="section-title section-title_theme_sm-dark-line tech__title">Технологии</h2>
 
         <p className="tech__heading">7 технологий</p>
-        <p className="tech__text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
+        <p className="tech__text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном
+          проекте.</p>
 
         <ul className="tech__list">
           <li className="tech__item">HTML</li>

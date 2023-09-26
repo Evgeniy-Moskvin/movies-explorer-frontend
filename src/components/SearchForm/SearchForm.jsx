@@ -1,15 +1,15 @@
 import React, {useEffect, useState, useContext} from "react";
 import './SearchForm.css';
-import { useForm } from "react-hook-form";
+import {useForm} from "react-hook-form";
 
 const SearchForm = ({handleSearch, handleShorts, isSave}) => {
 
   const {
     register,
     setValue,
-    formState: { errors, isSubmitting, isValid },
+    formState: {errors, isSubmitting, isValid},
     handleSubmit,
-      reset,
+    reset,
   } = useForm({
     mode: 'onSubmit',
   })
@@ -17,7 +17,7 @@ const SearchForm = ({handleSearch, handleShorts, isSave}) => {
   const onSubmit = (data) => {
     return new Promise((resolve) => {
       const result = handleSearch(data.search, data.toggleShorts);
-        resolve(result);
+      resolve(result);
     });
   };
 
@@ -48,24 +48,25 @@ const SearchForm = ({handleSearch, handleShorts, isSave}) => {
       <div className="search-form">
         <form name="search" className="search-form__form" onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className="search-form__search">
-              <label className="search-form__group">
-                  <input  name="search" type="search" className="search-form__input" placeholder="Фильм"
+            <label className="search-form__group">
+              <input name="search" type="search" className="search-form__input" placeholder="Фильм"
                      {...register('search', {
-                         required: 'Нужно ввести ключевое слово',
+                       required: 'Нужно ввести ключевое слово',
                      })}
-                      disabled={(isSubmitting) ? 'disabled' : false}
-                  />
-                  {errors?.search && (
-                      <span className="search-form__error-message">{errors?.search.message || 'Что-то пошло не так...'}</span>
-                  )}
-              </label>
-            <button type="submit" className="search-form__button button-animate" disabled={(!isValid || isSubmitting) ? 'disabled' : false}></button>
+                     disabled={(isSubmitting) ? 'disabled' : false}
+              />
+              {errors?.search && (
+                <span className="search-form__error-message">{errors?.search.message || 'Что-то пошло не так...'}</span>
+              )}
+            </label>
+            <button type="submit" className="search-form__button button-animate"
+                    disabled={(!isValid || isSubmitting) ? 'disabled' : false}></button>
           </div>
 
           <label className="search-form__switcher">
             <input id="toggleShorts" name="shorts" type="checkbox" className="search-form__checkbox"
-                {...register('toggleShorts')}
-                onChange={changeShorts}
+                   {...register('toggleShorts')}
+                   onChange={changeShorts}
                    disabled={(isSubmitting) ? 'disabled' : false}
             />
             <span className="search-form__custom-checkbox"></span>

@@ -11,10 +11,12 @@ const Footer = () => {
 
           <ul className="footer__links">
             <li className="footer__links-item">
-              <a href="https://practicum.yandex.ru/" target="_blank" rel="noreferrer" className="footer__link link-animate">Яндекс.Практикум</a>
+              <a href="https://practicum.yandex.ru/" target="_blank" rel="noreferrer"
+                 className="footer__link link-animate">Яндекс.Практикум</a>
             </li>
             <li className="footer__links-item">
-              <a href="https://github.com/Evgeniy-Moskvin" target="_blank" rel="noreferrer" className="footer__link link-animate">Github</a>
+              <a href="https://github.com/Evgeniy-Moskvin" target="_blank" rel="noreferrer"
+                 className="footer__link link-animate">Github</a>
             </li>
           </ul>
         </div>

@@ -12,7 +12,7 @@ class MainApi {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  updateUserInfo({ userName, userEmail }) {
+  updateUserInfo({userName, userEmail}) {
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
@@ -22,7 +22,7 @@ class MainApi {
         email: userEmail
       })
     })
-        .then(res => this._gerResponseJson(res));
+      .then(res => this._gerResponseJson(res));
   }
 
   getUserInfo() {
@@ -41,7 +41,7 @@ class MainApi {
       .then(res => this._gerResponseJson(res));
   }
 
-  updateUserAvatar({ image }) {
+  updateUserAvatar({image}) {
     return fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
@@ -53,7 +53,7 @@ class MainApi {
       .then(res => this._gerResponseJson(res));
   }
 
-  addCard({ name, link }) {
+  addCard({name, link}) {
     return fetch(`${this.url}/cards`, {
       method: 'POST',
       headers: this.headers,

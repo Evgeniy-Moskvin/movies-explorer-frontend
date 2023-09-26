@@ -54,30 +54,30 @@ function App() {
   };
 
   const handleLike = (movie) => {
-      return mainApi
-          .setLike(movie)
-          .then((res) => {
-              setUserMovies([res, ...userMovies]);
-              return userMovies;
-          })
-          .catch((err) => {
-              return err;
-          })
+    return mainApi
+      .setLike(movie)
+      .then((res) => {
+        setUserMovies([res, ...userMovies]);
+        return userMovies;
+      })
+      .catch((err) => {
+        return err;
+      })
   }
 
   const handleDislike = (id) => {
-        return mainApi
-            .removeLike(id)
-            .then(() => {
-                const updatedUserMovies = userMovies.filter(
-                    (movies) => !(id === movies.id)
-                );
-                setUserMovies(updatedUserMovies);
-                return(updatedUserMovies)
-            })
-            .catch((err) => {
-                return err;
-            })
+    return mainApi
+      .removeLike(id)
+      .then(() => {
+        const updatedUserMovies = userMovies.filter(
+          (movies) => !(id === movies.id)
+        );
+        setUserMovies(updatedUserMovies);
+        return (updatedUserMovies)
+      })
+      .catch((err) => {
+        return err;
+      })
   }
 
   const handleLogin = (userEmail, userPassword) => {
@@ -170,7 +170,8 @@ function App() {
               element={
                 <>
                   <Header promo={false} loggedIn={loggedIn}/>
-                  <Movies isSave={false} handleMovies={handleMovies} handleLike={handleLike} handleDislike={handleDislike} userMovies={userMovies}/>
+                  <Movies isSave={false} handleMovies={handleMovies} handleLike={handleLike}
+                          handleDislike={handleDislike} userMovies={userMovies}/>
                   <Footer/>
                 </>
               }

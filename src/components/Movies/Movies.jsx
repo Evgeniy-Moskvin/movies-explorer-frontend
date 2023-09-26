@@ -91,26 +91,26 @@ const Movies = ({isSave, handleMovies, handleLike, handleDislike, userMovies}) =
       } else {
         setIsEmpty(false);
       }
-    }
-    else {
+    } else {
       setIsEmpty(false);
     }
   }, [moviesFiltered]);
 
   return (
-      <main>
-        <SearchForm handleSearch={handleSearch} handleShorts={handleShorts} isSave={isSave}/>
+    <main>
+      <SearchForm handleSearch={handleSearch} handleShorts={handleShorts} isSave={isSave}/>
 
-        {isLoading ? (
-            <Preloader/>
-        ) : (
-            <>
-              {isEmpty ? <p className="text-empty">Ничего не найдено</p> : (
-                  <MoviesCardList movies={moviesFiltered} userMovies={userMovies} isShorts={isShorts} handleLike={handleLike} handleDislike={handleDislike} isSave={isSave}/>
-              )}
-            </>
-        )}
-      </main>
+      {isLoading ? (
+        <Preloader/>
+      ) : (
+        <>
+          {isEmpty ? <p className="text-empty">Ничего не найдено</p> : (
+            <MoviesCardList movies={moviesFiltered} userMovies={userMovies} isShorts={isShorts} handleLike={handleLike}
+                            handleDislike={handleDislike} isSave={isSave}/>
+          )}
+        </>
+      )}
+    </main>
   );
 };
 
