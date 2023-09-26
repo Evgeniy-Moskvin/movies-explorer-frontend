@@ -76,6 +76,7 @@ class MainApi {
   }
 
   setLike(movie) {
+    console.log(movie);
     return fetch(`${this.url}/movies`, {
       method: 'POST',
       headers: this.headers,

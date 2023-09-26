@@ -4,8 +4,6 @@ import { useForm } from "react-hook-form";
 
 const SearchForm = ({handleSearch, handleShorts, isSave}) => {
 
-  console.log('SearchForm | isSave', isSave);
-
   const {
     register,
     setValue,
@@ -28,13 +26,9 @@ const SearchForm = ({handleSearch, handleShorts, isSave}) => {
   }
 
   useEffect(() => {
-    console.log('useEffect');
 
     const search = localStorage.getItem('search') || '';
     const isShorts = localStorage.getItem('isShorts');
-
-    console.log('search', search);
-    console.log('isShorts', isShorts);
 
     /*if (isSave) {
       setValue('toggleShorts', false);
