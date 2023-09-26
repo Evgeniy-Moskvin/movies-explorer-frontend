@@ -7,8 +7,7 @@ import {SHORT_DURATION} from "../../utils/config";
 import Preloader from "../Preloader/Preloader";
 import login from "../Login/Login";
 
-const Movies = ({isSave, handleMovies}) => {
-  const currentUser = useContext(CurrentUserContext);
+const Movies = ({isSave, handleMovies, handleLike, handleDislike, userMovies}) => {
   const [movies, setMovies] = useState([]); // Все фильмы
   const [moviesInit, setMoviesInit] = useState([]); // Загруженные фильмы
   const [isShorts, setIsShorts] = useState(null); // Checkbox короткометражек
@@ -16,7 +15,6 @@ const Movies = ({isSave, handleMovies}) => {
   const [isEmpty, setIsEmpty] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
-
 
   const filter = (movies, search = '', isShorts) => {
     const result = movies.filter((item) => {
@@ -31,7 +29,6 @@ const Movies = ({isSave, handleMovies}) => {
   const filterShorts = (movies) => {
     return movies.filter((item) => item.duration < SHORT_DURATION);
   }
-
 
   const handleShorts = (isShorts) => {
     setIsShorts(isShorts);
@@ -48,7 +45,6 @@ const Movies = ({isSave, handleMovies}) => {
 
   const handleFilter = (movies, search, isShorts) => {
     const result = filter(movies, search, isShorts);
-    console.log('MOVIES | filter', result);
 
     setMoviesInit(result);
     setMoviesFiltered(isShorts ? filterShorts(result) : result);
@@ -103,14 +99,14 @@ const Movies = ({isSave, handleMovies}) => {
 
   return (
       <main>
-        <SearchForm handleSearch={handleSearch} handleShorts={handleShorts} isShorts={isShorts} isSave={isSave}/>
+        <SearchForm handleSearch={handleSearch} handleShorts={handleShorts} isSave={isSave}/>
 
         {isLoading ? (
             <Preloader/>
         ) : (
             <>
               {isEmpty ? <p className="text-empty">Ничего не найдено</p> : (
-                  <MoviesCardList movies={moviesFiltered} isShorts={isShorts} isSave={isSave}/>
+                  <MoviesCardList movies={moviesFiltered} userMovies={userMovies} isShorts={isShorts} handleLike={handleLike} handleDislike={handleDislike} isSave={isSave}/>
               )}
             </>
         )}

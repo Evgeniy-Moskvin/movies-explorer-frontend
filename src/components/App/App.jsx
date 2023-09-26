@@ -17,11 +17,14 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import SavedMovies from "../SavedMovies/SavedMovies";
 
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userMovies, setUserMovies] = useState([])
+
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -49,6 +52,33 @@ function App() {
         return err;
       });
   };
+
+  const handleLike = (movie) => {
+      return mainApi
+          .setLike(movie)
+          .then((res) => {
+              setUserMovies([res, ...userMovies]);
+              return userMovies;
+          })
+          .catch((err) => {
+              return err;
+          })
+  }
+
+  const handleDislike = (id) => {
+        return mainApi
+            .removeLike(id)
+            .then(() => {
+                const updatedUserMovies = userMovies.filter(
+                    (movies) => !(id === movies.id)
+                );
+                setUserMovies(updatedUserMovies);
+                return(updatedUserMovies)
+            })
+            .catch((err) => {
+                return err;
+            })
+  }
 
   const handleLogin = (userEmail, userPassword) => {
     return auth
@@ -140,7 +170,7 @@ function App() {
               element={
                 <>
                   <Header promo={false} loggedIn={loggedIn}/>
-                  <Movies isSave={false} handleMovies={handleMovies}/>
+                  <Movies isSave={false} handleMovies={handleMovies} handleLike={handleLike} handleDislike={handleDislike} userMovies={userMovies}/>
                   <Footer/>
                 </>
               }
@@ -156,7 +186,7 @@ function App() {
               element={
                 <>
                   <Header promo={false} loggedIn={loggedIn}/>
-                  <Movies isSave={true}/>
+                  <SavedMovies isSave={true} userMovies={userMovies}/>
                   <Footer/>
                 </>
               }

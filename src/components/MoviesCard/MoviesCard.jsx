@@ -1,8 +1,10 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import './MoviesCard.css';
 
 
-const MoviesCard = ({isSave, movie, isLike}) => {
+const MoviesCard = ({isSave, movie, isLike, savedMovie = {isSaved: false, id: null}}) => {
+
+    const [isUserMovie, setIsUserMovie] = useState(savedMovie.isSaved);
 
     const durationHours = () => {
         return Math.floor(Number(movie.duration) / 60);
@@ -11,6 +13,16 @@ const MoviesCard = ({isSave, movie, isLike}) => {
     const durationMinutes = () => {
         return Number(movie.duration) % 60;
     }
+
+    const handleLike = () => {
+
+    }
+
+    useEffect(() => {
+        console.log(savedMovie.isSaved);
+
+        setIsUserMovie(savedMovie.isSaved);
+    }, [savedMovie]);
 
     return (
         <a href={movie.trailerLink} target="_blank" rel="noreferrer" className="movies-card">
@@ -22,7 +34,9 @@ const MoviesCard = ({isSave, movie, isLike}) => {
                         {isSave ?
                             <button type="button" className="movies-card__button-delete button-animate"></button>
                             : <button type="button"
-                                      className={`movies-card__button-like button-animate ${isLike && 'movies-card__button-like_active'}`}></button>
+                                className={`movies-card__button-like button-animate ${isLike && 'movies-card__button-like_active'}`}
+
+                            ></button>
                         }
                     </div>
                     <span className="movies-card__duration">{

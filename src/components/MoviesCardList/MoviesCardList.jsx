@@ -9,7 +9,7 @@ import savedMovies from "../SavedMovies/SavedMovies";
 import login from "../Login/Login";
 
 
-const MoviesCardList = ({ movies, isShorts, isSave}) => {
+const MoviesCardList = ({ movies, isSave, handleLike, handleDislike, userMovies}) => {
 
   const size = useWindowSize();
   const [isMount, setIsMount] = useState(true);
@@ -31,6 +31,24 @@ const MoviesCardList = ({ movies, isShorts, isSave}) => {
     }
     (moreCount ? setIsEmptySearch(false) : setIsEmptySearch(true));
   }
+
+  /*const checkSavedMovies = (savedMovies, movie) => {
+    const isSaved = savedMovies.find((item) => item.movieId === movie.id);
+    if (isSaved) {
+      return {
+        isSaved: true,
+        id: isSaved._id,
+      }
+    }
+
+    if (!isSaved) {
+      return {
+        isSaved: false,
+        id: null,
+      }
+    }
+
+  }*/
 
   useEffect(() => {
     if (!isSave) {
@@ -61,16 +79,44 @@ const MoviesCardList = ({ movies, isShorts, isSave}) => {
   }, [movies, moviesDetails.INIT_COUNT_RENDER]);
 
   return (
-    <>
+      <div className="movies-card-list">
+        <div className="container container_block_films">
+          <ul className="movies-card-list__grid">
+            {showMovieList.map((movie) => (
+                <li key={movie.id} className="movies-card-list__item">
+                  <MoviesCard
+                    /*savedMovie={checkSavedMovies(savedMovies, movie)}*/
+                      isSave={isSave}
+                      movie={movie}
+                      userMovie={userMovies}
+                      isLike={false}
+                  />
+                </li>
+            ))}
+          </ul>
+          {
+              !isSave &&
+              showMovieList.length >= MOVIES_ON_SIZES.SM.INIT_COUNT_ROW && showMovieList.length < movies.length && (
+                  <button type="button" className="movies-card-list__button-more button-animate" onClick={handleMore}>Ещё</button>
+              )
+          }
+        </div>
+      </div>
+
+    /*<>
+
+
       {!isSave ?
-        <div className={`movies-card-list`}>
+        <div className="movies-card-list">
           <div className="container container_block_films">
             <ul className="movies-card-list__grid">
               {showMovieList.map((movie) => (
                   <li key={movie.id} className="movies-card-list__item">
                     <MoviesCard
+
                       isSave={isSave}
                       movie={movie}
+                      userMovie={userMovies}
                       isLike={false}
                     />
                   </li>
@@ -87,7 +133,7 @@ const MoviesCardList = ({ movies, isShorts, isSave}) => {
         :
         <div className="movies-card-list movies-card-list_theme_saved-films">
           <div className="container">
-            {/*<ul className="movies-card-list__grid">
+            <ul className="movies-card-list__grid">
               <li className="movies-card-list__item">
                 <MoviesCard isLike={false} isSave={true}/>
               </li>
@@ -99,11 +145,11 @@ const MoviesCardList = ({ movies, isShorts, isSave}) => {
               <li className="movies-card-list__item">
                 <MoviesCard isLike={false} isSave={true}/>
               </li>
-            </ul>*/}
+            </ul>
           </div>
         </div>
       }
-    </>
+    </>*/
 
   );
 };

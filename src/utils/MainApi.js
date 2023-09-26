@@ -75,17 +75,30 @@ class MainApi {
       .then(res => this._gerResponseJson(res));
   }
 
-  setLike(id) {
-    return fetch(`${this.url}/cards/${id}/likes`, {
-      method: 'PUT',
+  setLike(movie) {
+    return fetch(`${this.url}/movies`, {
+      method: 'POST',
       headers: this.headers,
       credentials: 'include',
+      body: JSON.stringify({
+        country: movie.country,
+        director: movie.director,
+        duration: movie.duration,
+        year: movie.year,
+        description: movie.description,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN,
+        movieId: movie.id,
+        image: `https://api.nomoreparties.co/${movie.image.url}`,
+        trailerLink: movie.trailerLink,
+        thumbnail: `https://api.nomoreparties.co/${movie.image.previewUrl}`,
+      })
     })
       .then(res => this._gerResponseJson(res));
   }
 
   removeLike(id) {
-    return fetch(`${this.url}/cards/${id}/likes`, {
+    return fetch(`${this.url}/movies/${id}`, {
       method: 'DELETE',
       headers: this.headers,
       credentials: 'include',

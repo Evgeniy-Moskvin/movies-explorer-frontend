@@ -1,23 +1,24 @@
 import React, {useEffect, useState, useContext} from "react";
 import './SearchForm.css';
-import {set, useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 
-const SearchForm = ({handleSearch, handleShorts, isShorts, isSave}) => {
+const SearchForm = ({handleSearch, handleShorts, isSave}) => {
+
+  console.log('SearchForm | isSave', isSave);
 
   const {
     register,
     setValue,
     formState: { errors, isSubmitting, isValid },
     handleSubmit,
+      reset,
   } = useForm({
     mode: 'onSubmit',
   })
 
   const onSubmit = (data) => {
-    console.log('onSubmit',data);
     return new Promise((resolve) => {
       const result = handleSearch(data.search, data.toggleShorts);
-        console.log(result);
         resolve(result);
     });
   };
@@ -27,13 +28,26 @@ const SearchForm = ({handleSearch, handleShorts, isShorts, isSave}) => {
   }
 
   useEffect(() => {
+    console.log('useEffect');
+
     const search = localStorage.getItem('search') || '';
     const isShorts = localStorage.getItem('isShorts');
+
+    console.log('search', search);
+    console.log('isShorts', isShorts);
+
+    /*if (isSave) {
+      setValue('toggleShorts', false);
+      setValue('search', '')
+    } else {
+      setValue('toggleShorts', true);
+      setValue('search', search);
+    }*/
 
     (!isSave && isShorts === 'true') && setValue('toggleShorts', true);
 
     (!isSave && search) && setValue('search', search);
-  }, []);
+  }, [/*isSave*/]);
 
   return (
     <div className="container container_block_search">
@@ -41,7 +55,7 @@ const SearchForm = ({handleSearch, handleShorts, isShorts, isSave}) => {
         <form name="search" className="search-form__form" onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className="search-form__search">
               <label className="search-form__group">
-                  <input id="search" name="search" type="search" className="search-form__input" placeholder="Фильм"
+                  <input  name="search" type="search" className="search-form__input" placeholder="Фильм"
                      {...register('search', {
                          required: 'Нужно ввести ключевое слово',
                      })}
