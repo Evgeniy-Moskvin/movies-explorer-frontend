@@ -1,8 +1,9 @@
 import React from 'react';
 import './NotFound.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const NotFound = () => {
+    const navigate = useNavigate();
   return (
     <main className="not-found">
       <div className="not-found__content">
@@ -10,7 +11,10 @@ const NotFound = () => {
           <h1 className="not-found__title">Страница не найдена</h1>
       </div>
 
-      <Link to="/" className="not-found__link link-animate">Назад</Link>
+        <button type="button" className="not-found__link link-animate" onClick={(evt) => {
+            evt.preventDefault();
+            navigate(-1);
+        }}>Назад</button>
     </main>
   );
 };
