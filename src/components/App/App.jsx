@@ -1,6 +1,12 @@
 import './App.css';
 
-import { Routes, Route } from 'react-router-dom';
+import {useEffect, useState} from "react";
+import {Routes, Route, useNavigate, useLocation} from 'react-router-dom';
+
+import {auth} from '../../utils/auth';
+import {mainApi} from "../../utils/MainApi";
+import {moviesApi} from "../../utils/MoviesApi";
+import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -10,71 +16,233 @@ import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import SavedMovies from '../SavedMovies/SavedMovies';
+
+import UserRoute from "../UserRoute/UserRoute";
 
 
 function App() {
+  const [currentUser, setCurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userMovies, setUserMovies] = useState([])
+
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    tokenCheck();
+    if (loggedIn) {
+      Promise.all([mainApi.getUserInfo(), mainApi.getMovies()])
+        .then(([userData, movies]) => {
+          setCurrentUser(userData);
+          setUserMovies(movies);
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    }
+  }, [loggedIn]);
+
+  const handleMovies = () => {
+    return moviesApi
+      .getMovies()
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
+
+  const handleLike = (movie) => {
+    return mainApi
+      .setLike(movie)
+      .then((res) => {
+        setUserMovies([res, ...userMovies]);
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      })
+  }
+
+  const handleDislike = (id) => {
+    return mainApi
+      .removeLike(id)
+      .then(() => {
+        const updatedUserMovies = userMovies.filter(
+          (movies) => !(id === movies._id)
+        );
+        setUserMovies(updatedUserMovies);
+        return (updatedUserMovies)
+      })
+      .catch((err) => {
+        return err;
+      })
+  }
+
+  const handleLogin = (userEmail, userPassword) => {
+    return auth
+      .signIn(userEmail, userPassword)
+      .then((res) => {
+        localStorage.setItem('userEmail', userEmail);
+        setLoggedIn(true);
+        navigate('/movies', {replace: true});
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  const handleRegister = (userName, userEmail, userPassword) => {
+    return auth
+      .signUp(userName, userEmail, userPassword)
+      .then(() => {
+        handleLogin(userEmail, userPassword)
+          .then(() => {
+            console.log('success');
+          });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  const handleUpdateUser = (data) => {
+    return mainApi
+      .updateUserInfo(data)
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((err) => {
+        console.error(err);
+        return err;
+      });
+  }
+
+  const handleLogOut = () => {
+    return auth
+      .signOut()
+      .then(() => {
+        setLoggedIn(false);
+        setCurrentUser({});
+        localStorage.clear();
+        navigate('/', {replace: true});
+      })
+      .catch((err) => {
+        console.error(err)
+      });
+  };
+
+  const tokenCheck = () => {
+    if (localStorage.getItem('userEmail')) {
+      auth
+        .tokenCheck()
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+            navigate(location);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }
+
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <>
-            <Header promo={true} loggedIn={false}/>
-            <Main/>
-            <Footer/>
-          </>
-        }
-      />
+    <CurrentUserContext.Provider value={currentUser}>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Header promo={true} loggedIn={loggedIn}/>
+              <Main/>
+              <Footer/>
+            </>
+          }
+        />
 
-      <Route
-        path="/movies"
-        element={
-          <>
-            <Header promo={false} loggedIn={true}/>
-            <Movies isSave={false}/>
-            <Footer/>
-          </>
-        }
-      />
+        <Route
+          path="/movies"
+          element={
+            <ProtectedRoute
+              loggedIn={loggedIn}
+              element={
+                <>
+                  <Header promo={false} loggedIn={loggedIn}/>
+                  <Movies isSave={false} handleMovies={handleMovies} handleLike={handleLike}
+                          handleDislike={handleDislike} userMovies={userMovies}/>
+                  <Footer/>
+                </>
+              }
+            ></ProtectedRoute>
+          }
+        />
 
-      <Route
-        path="/saved-movies"
-        element={
-          <>
-            <Header promo={false} loggedIn={true}/>
-            <Movies isSave={true}/>
-            <Footer/>
-          </>
-        }
-      />
+        <Route
+          path="/saved-movies"
+          element={
+            <ProtectedRoute
+              loggedIn={loggedIn}
+              element={
+                <>
+                  <Header promo={false} loggedIn={loggedIn}/>
+                  <SavedMovies isSave={true} userMovies={userMovies} handleDislike={handleDislike}/>
+                  <Footer/>
+                </>
+              }
+            ></ProtectedRoute>
+          }
+        />
 
-      <Route
-        path="/profile"
-        element={
-          <>
-            <Header promo={false} loggedIn={true}/>
-            <Profile/>
-          </>
-        }
-      />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute
+              loggedIn={loggedIn}
+              element={
+                <>
+                  <Header promo={false} loggedIn={loggedIn}/>
+                  <Profile handleLogOut={handleLogOut} handleUpdateUser={handleUpdateUser}/>
+                </>
+              }
+            ></ProtectedRoute>
+          }
+        />
 
-      <Route
-        path="/signup"
-        element={
-          <Register/>
-        }
-      />
+        <Route
+          element={
+            <UserRoute
+              loggedIn={loggedIn}
+            />
+          }
+        >
+          <Route
+            path="/signin"
+            element={
+              <Login
+                handleLogin={handleLogin}
+              />
+            }
+          />
 
-      <Route
-        path="/signin"
-        element={
-          <Login/>
-        }
-      />
+          <Route
+            path="/signup"
+            element={
+              <Register
+                handleRegister={handleRegister}
+              />
+            }
+          />
+        </Route>
 
-
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+        <Route path="*" element={<NotFound/>}/>
+      </Routes>
+    </CurrentUserContext.Provider>
   )
 }
 

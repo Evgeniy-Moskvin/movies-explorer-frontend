@@ -32,12 +32,14 @@
   list-style: none;
 }
 
-.profile__row {
+.profile__group {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
 
-  box-sizing: unset;
+.profile__row {
+  box-sizing: border-box;
   margin: 0;
   padding: 15px 0;
 
@@ -87,6 +89,12 @@
 .profile__input:focus {
   outline: none;
   border-color: #4285f4;
+}
+
+.profile__input_error {
+  color: #ee3465;
+
+  border-color: #ee3465;
 }
 
 .profile__controls {
