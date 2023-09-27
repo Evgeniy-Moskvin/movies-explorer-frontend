@@ -22,7 +22,7 @@ const MoviesCard = ({isSave, movie, handleLike, handleDislike, userMovie = {isSa
     }
     handleLike(movie)
       .then((res) => {
-        if (res) {
+        if (typeof res === 'object' && 'owner' in res) {
           setIsUserMovie(true);
         }
       })
@@ -39,7 +39,7 @@ const MoviesCard = ({isSave, movie, handleLike, handleDislike, userMovie = {isSa
   const unsetLike = (id) => {
     handleDislike(id)
       .then((res) => {
-        if(res) {
+        if (typeof res === 'object' && 'owner' in res) {
           setIsUserMovie(false);
         }
       })
