@@ -17,7 +17,9 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import SavedMovies from "../SavedMovies/SavedMovies";
+import SavedMovies from '../SavedMovies/SavedMovies';
+
+import UserRoute from "../UserRoute/UserRoute";
 
 
 function App() {
@@ -213,22 +215,30 @@ function App() {
         />
 
         <Route
-          path="/signup"
           element={
-            <Register
-              handleRegister={handleRegister}
+            <UserRoute
+              loggedIn={loggedIn}
             />
           }
-        />
+        >
+          <Route
+            path="/signin"
+            element={
+              <Login
+                handleLogin={handleLogin}
+              />
+            }
+          />
 
-        <Route
-          path="/signin"
-          element={
-            <Login
-              handleLogin={handleLogin}
-            />
-          }
-        />
+          <Route
+            path="/signup"
+            element={
+              <Register
+                handleRegister={handleRegister}
+              />
+            }
+          />
+        </Route>
 
         <Route path="*" element={<NotFound/>}/>
       </Routes>
