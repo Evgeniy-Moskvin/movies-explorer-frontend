@@ -2,9 +2,9 @@ import {useEffect, useState} from 'react';
 import './MoviesCard.css';
 
 
-const MoviesCard = ({isSave, movie, handleLike, handleDislike, savedMovie = {isSaved: false, id: null}}) => {
+const MoviesCard = ({isSave, movie, handleLike, handleDislike, userMovie = {isSaved: false, id: null}}) => {
 
-  const [isUserMovie, setIsUserMovie] = useState(savedMovie.isSaved);
+  const [isUserMovie, setIsUserMovie] = useState(userMovie.isSaved);
 
   const durationHours = () => {
     return Math.floor(Number(movie.duration) / 60);
@@ -16,9 +16,11 @@ const MoviesCard = ({isSave, movie, handleLike, handleDislike, savedMovie = {isS
 
   const setLike = (movie) => {
     if (isUserMovie) {
-      unsetLike(movie.id);
+      unsetLike(userMovie.id);
+      return;
     }
 
+    console.log('setLike');
     handleLike(movie)
       .then((res) => {
         if (!res.includes('Ошибка')) {
@@ -36,9 +38,12 @@ const MoviesCard = ({isSave, movie, handleLike, handleDislike, savedMovie = {isS
   }
 
   const unsetLike = (id) => {
+    console.log('unsetLike');
     handleDislike(id)
       .then((res) => {
-
+        if(!res.includes('Ошибка')) {
+          setIsUserMovie(false);
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -48,12 +53,12 @@ const MoviesCard = ({isSave, movie, handleLike, handleDislike, savedMovie = {isS
   const handleUnsetLike = (evt) => {
     evt.preventDefault();
 
-    unsetLike(savedMovie.id);
+    unsetLike(movie._id);
   }
 
   useEffect(() => {
-    setIsUserMovie(savedMovie.isSaved);
-  }, [savedMovie]);
+    setIsUserMovie(userMovie.isSaved);
+  }, [userMovie]);
 
   return (
     <a href={movie.trailerLink} target="_blank" rel="noreferrer" className="movies-card">
@@ -63,7 +68,9 @@ const MoviesCard = ({isSave, movie, handleLike, handleDislike, savedMovie = {isS
           <div className="movies-card__row">
             <h2 className="movies-card__name">{movie.nameRU}</h2>
             {isSave ?
-              <button type="button" className="movies-card__button-delete button-animate"></button>
+              <button type="button" className="movies-card__button-delete button-animate"
+                      onClick={handleUnsetLike}
+              ></button>
               : <button type="button"
                         className={`movies-card__button-like button-animate ${isUserMovie ? 'movies-card__button-like_active' : ''}`}
                         onClick={handleSetLike}

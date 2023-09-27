@@ -32,9 +32,10 @@ function App() {
   useEffect(() => {
     tokenCheck();
     if (loggedIn) {
-      Promise.all([mainApi.getUserInfo()])
-        .then(([userData]) => {
+      Promise.all([mainApi.getUserInfo(), mainApi.getMovies()])
+        .then(([userData, movies]) => {
           setCurrentUser(userData);
+          setUserMovies(movies);
         })
         .catch((err) => {
           console.error(err);
@@ -58,7 +59,7 @@ function App() {
       .setLike(movie)
       .then((res) => {
         setUserMovies([res, ...userMovies]);
-        return userMovies;
+        return res;
       })
       .catch((err) => {
         return err;
@@ -70,7 +71,7 @@ function App() {
       .removeLike(id)
       .then(() => {
         const updatedUserMovies = userMovies.filter(
-          (movies) => !(id === movies.id)
+          (movies) => !(id === movies._id)
         );
         setUserMovies(updatedUserMovies);
         return (updatedUserMovies)

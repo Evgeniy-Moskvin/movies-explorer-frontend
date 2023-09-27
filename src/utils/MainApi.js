@@ -33,50 +33,7 @@ class MainApi {
       .then(res => this._gerResponseJson(res));
   }
 
-  getInitialCards() {
-    return fetch(`${this.url}/cards`, {
-      headers: this.headers,
-      credentials: 'include',
-    })
-      .then(res => this._gerResponseJson(res));
-  }
-
-  updateUserAvatar({image}) {
-    return fetch(`${this.url}/users/me/avatar`, {
-      method: 'PATCH',
-      headers: this.headers,
-      credentials: 'include',
-      body: JSON.stringify({
-        avatar: image
-      })
-    })
-      .then(res => this._gerResponseJson(res));
-  }
-
-  addCard({name, link}) {
-    return fetch(`${this.url}/cards`, {
-      method: 'POST',
-      headers: this.headers,
-      credentials: 'include',
-      body: JSON.stringify({
-        name: name,
-        link: link
-      })
-    })
-      .then(res => this._gerResponseJson(res));
-  }
-
-  removeCard(id) {
-    return fetch(`${this.url}/cards/${id}`, {
-      method: 'DELETE',
-      headers: this.headers,
-      credentials: 'include',
-    })
-      .then(res => this._gerResponseJson(res));
-  }
-
   setLike(movie) {
-    console.log(movie);
     return fetch(`${this.url}/movies`, {
       method: 'POST',
       headers: this.headers,
@@ -90,9 +47,9 @@ class MainApi {
         nameRU: movie.nameRU,
         nameEN: movie.nameEN,
         movieId: movie.id,
-        image: `https://api.nomoreparties.co/${movie.image.url}`,
+        image: `https://api.nomoreparties.co${movie.image.url}`,
         trailerLink: movie.trailerLink,
-        thumbnail: `https://api.nomoreparties.co/${movie.image.previewUrl}`,
+        thumbnail: `https://api.nomoreparties.co${movie.image.url}`,
       })
     })
       .then(res => this._gerResponseJson(res));
@@ -107,22 +64,12 @@ class MainApi {
       .then(res => this._gerResponseJson(res));
   }
 
-  changeLikeCardStatus(id, isLiked) {
-    if (isLiked) {
-      return fetch(`${this.url}/cards/${id}/likes`, {
-        method: 'DELETE',
-        headers: this.headers,
-        credentials: 'include',
-      })
-        .then(res => this._gerResponseJson(res));
-    } else {
-      return fetch(`${this.url}/cards/${id}/likes`, {
-        method: 'PUT',
-        headers: this.headers,
-        credentials: 'include',
-      })
-        .then(res => this._gerResponseJson(res));
-    }
+  getMovies() {
+    return fetch(`${this.url}/movies`, {
+      headers: this.headers,
+      credentials: 'include',
+    })
+      .then(res => this._gerResponseJson(res));
   }
 }
 

@@ -32,8 +32,9 @@ const MoviesCardList = ({movies, isSave, handleLike, handleDislike, userMovies})
     (moreCount ? setIsEmptySearch(false) : setIsEmptySearch(true));
   }
 
-  const checkSavedMovies = (savedMovies, movie) => {
-    const isSaved = savedMovies.find((item) => item.movieId === movie.id);
+  const checkUserMovies = (userMovies, movie) => {
+    console.log('checkUserMovies', userMovies);
+    const isSaved = userMovies.find((item) => item.movieId === movie.id);
     if (isSaved) {
       return {
         isSaved: true,
@@ -83,10 +84,9 @@ const MoviesCardList = ({movies, isSave, handleLike, handleDislike, userMovies})
           {showMovieList.map((movie) => (
             <li key={movie.id} className="movies-card-list__item">
               <MoviesCard
-                savedMovie={checkSavedMovies(userMovies, movie)}
+                userMovie={checkUserMovies(userMovies, movie)}
                 isSave={isSave}
                 movie={movie}
-                userMovie={userMovies}
                 handleLike={handleLike}
                 handleDislike={handleDislike}
               />
