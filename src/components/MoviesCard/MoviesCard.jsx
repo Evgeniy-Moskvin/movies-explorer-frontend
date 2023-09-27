@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import './MoviesCard.css';
+import login from "../Login/Login";
 
 
 const MoviesCard = ({isSave, movie, handleLike, handleDislike, userMovie = {isSaved: false, id: null}}) => {
@@ -19,11 +20,9 @@ const MoviesCard = ({isSave, movie, handleLike, handleDislike, userMovie = {isSa
       unsetLike(userMovie.id);
       return;
     }
-
-    console.log('setLike');
     handleLike(movie)
       .then((res) => {
-        if (!res.includes('Ошибка')) {
+        if (res) {
           setIsUserMovie(true);
         }
       })
@@ -38,10 +37,9 @@ const MoviesCard = ({isSave, movie, handleLike, handleDislike, userMovie = {isSa
   }
 
   const unsetLike = (id) => {
-    console.log('unsetLike');
     handleDislike(id)
       .then((res) => {
-        if(!res.includes('Ошибка')) {
+        if(res) {
           setIsUserMovie(false);
         }
       })
@@ -50,9 +48,8 @@ const MoviesCard = ({isSave, movie, handleLike, handleDislike, userMovie = {isSa
       })
   }
 
-  const handleUnsetLike = (evt) => {
+  const handleDelete = (evt) => {
     evt.preventDefault();
-
     unsetLike(movie._id);
   }
 
@@ -63,13 +60,13 @@ const MoviesCard = ({isSave, movie, handleLike, handleDislike, userMovie = {isSa
   return (
     <a href={movie.trailerLink} target="_blank" rel="noreferrer" className="movies-card">
       <figure className="movies-card__inner">
-        <img src={`https://api.nomoreparties.co/${movie.image.url}`} alt={movie.nameRU} className="movies-card__image"/>
+        <img src={isSave ? movie.image : `https://api.nomoreparties.co/${movie.image.url}`} alt={movie.nameRU} className="movies-card__image"/>
         <figcaption className="movies-card__body">
           <div className="movies-card__row">
             <h2 className="movies-card__name">{movie.nameRU}</h2>
             {isSave ?
               <button type="button" className="movies-card__button-delete button-animate"
-                      onClick={handleUnsetLike}
+                      onClick={handleDelete}
               ></button>
               : <button type="button"
                         className={`movies-card__button-like button-animate ${isUserMovie ? 'movies-card__button-like_active' : ''}`}

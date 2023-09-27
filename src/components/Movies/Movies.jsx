@@ -105,7 +105,7 @@ const Movies = ({isSave, handleMovies, handleLike, handleDislike, userMovies}) =
       ) : (
         <>
           {isEmpty ? <p className="text-empty">Ничего не найдено</p> : (
-            <MoviesCardList movies={moviesFiltered} userMovies={userMovies} isShorts={isShorts} handleLike={handleLike}
+            <MoviesCardList movies={moviesFiltered} userMovies={userMovies} handleLike={handleLike}
                             handleDislike={handleDislike} isSave={isSave}/>
           )}
         </>

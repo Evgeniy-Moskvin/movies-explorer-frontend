@@ -33,7 +33,6 @@ const MoviesCardList = ({movies, isSave, handleLike, handleDislike, userMovies})
   }
 
   const checkUserMovies = (userMovies, movie) => {
-    console.log('checkUserMovies', userMovies);
     const isSaved = userMovies.find((item) => item.movieId === movie.id);
     if (isSaved) {
       return {

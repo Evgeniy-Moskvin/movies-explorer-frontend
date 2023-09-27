@@ -3,7 +3,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import {SHORT_DURATION} from "../../utils/config";
 
-const SavedMovies = ({isSave, userMovies}) => {
+const SavedMovies = ({isSave, userMovies, handleDislike}) => {
 
   const [search, setSearch] = useState();
   const [isShort, setIsShort] = useState(false);
@@ -52,7 +52,7 @@ const SavedMovies = ({isSave, userMovies}) => {
       <SearchForm handleSearch={handleSearch} handleShorts={handleShorts} isSave={isSave}/>
 
       {isEmpty ? <p className="text-empty">Ничего не найдено</p> : (
-        <MoviesCardList movies={moviesFiltered} userMovies={userMovies} isSave={isSave}/>
+        <MoviesCardList movies={moviesFiltered} userMovies={userMovies} isSave={isSave} handleDislike={handleDislike}/>
       )}
     </main>
   );

@@ -188,7 +188,7 @@ function App() {
               element={
                 <>
                   <Header promo={false} loggedIn={loggedIn}/>
-                  <SavedMovies isSave={true} userMovies={userMovies}/>
+                  <SavedMovies isSave={true} userMovies={userMovies} handleDislike={handleDislike}/>
                   <Footer/>
                 </>
               }
